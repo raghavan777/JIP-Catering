@@ -1,0 +1,575 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=recia@700,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Marcellus&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #D4AF37;
+  --color-gold-light: #F0D060;
+  --color-gold-dark: #B88E2F;
+  --color-forest: #234927;
+  --color-forest-dark: #122B15;
+  --color-brown: #4A2E1B;
+  --color-burnt-orange: #E3834F;
+  --color-peach: #FFD1A9;
+  --color-cream: #E8DEC9;
+}
+
+/* ═══════════════════════════════════════════
+   ROOT VARIABLES
+═══════════════════════════════════════════ */
+:root {
+  --gold: #D4AF37;
+  --gold-light: #F0D060;
+  --gold-dark: #B88E2F;
+  --forest: #234927;
+  --forest-dark: #122B15;
+  --brown: #4A2E1B;
+  --burnt-orange: #E3834F;
+  --peach: #FFD1A9;
+  --cream: #E8DEC9;
+  --white-glass: rgba(255, 255, 255, 0.15);
+  --font-display: 'Recia', serif;
+  --font-serif: 'Satoshi', sans-serif;
+  --font-sub: 'Satoshi', sans-serif;
+  --font-body: 'Satoshi', sans-serif;
+  --font-modern: 'Satoshi', sans-serif;
+  --font-marcellus: 'Recia', serif;
+  --font-cinzel: 'Recia', serif;
+  --font-cinzel-dec: 'Recia', serif;
+}
+
+/* ═══════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+}
+
+a, button, [role="button"], input, select, textarea {
+  cursor: none;
+}
+
+/* Ensure headings and specific display classes use Recia Bold */
+h1, h2, h3, h4, h5, h6,
+.font-cinzel,
+.font-marcellus,
+.font-cinzel-dec {
+  font-family: 'Recia', serif !important;
+  font-weight: 700 !important;
+}
+
+/* Ensure buttons, links, inputs, and badges use Satoshi */
+button,
+a,
+input,
+select,
+textarea,
+.badge-traditional,
+.tier-badge,
+button.font-marcellus,
+button.font-cinzel,
+a.font-marcellus,
+a.font-cinzel {
+  font-family: 'Satoshi', sans-serif !important;
+}
+
+/* ═══════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes floatCard {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 0px rgba(212, 175, 55, 0.4); }
+  50%       { box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 50px rgba(212, 175, 55, 0.3); }
+}
+
+@keyframes leafSway {
+  0%   { transform: rotate(-6deg) scale(1); }
+  50%  { transform: rotate(6deg) scale(1.05); }
+  100% { transform: rotate(-6deg) scale(1); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: #E3834F; }
+  50%       { border-color: #D4AF37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes textShimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes shimmerTravel {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes particleFloat {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes ripple {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes whatsappPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70%  { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ═══════════════════════════════════════════
+   UTILITY CLASSES
+═══════════════════════════════════════════ */
+.card {
+  animation: floatCard 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.card:hover {
+  animation-play-state: paused;
+}
+
+/* Gold shimmer text */
+.text-gold-shimmer {
+  background: linear-gradient(90deg, #B88E2F, #D4AF37, #F0D060, #D4AF37, #B88E2F);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 3s linear infinite;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(227, 131, 79, 0.4);
+  border-radius: 24px;
+}
+
+.glass-card-dark {
+  background: rgba(18, 43, 21, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 24px;
+}
+
+/* Golden divider line */
+.gold-divider {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  border: none;
+  margin: 2rem auto;
+  width: 60%;
+}
+
+/* Section label badge */
+.badge-traditional {
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FFD1A9, #F7D7C2);
+  color: #E3834F;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(227, 131, 79, 0.3);
+}
+
+/* WhatsApp button pulse */
+.whatsapp-btn {
+  animation: whatsappPulse 2s ease-out infinite;
+}
+
+/* Gold pulse border */
+.gold-pulse {
+  animation: goldPulse 2.5s ease-in-out infinite;
+}
+
+/* Menu tier badge */
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tier-badge-normal {
+  background: linear-gradient(135deg, #234927, #3a6e3f);
+  color: #fff;
+}
+
+.tier-badge-elite {
+  background: linear-gradient(135deg, #B88E2F, #D4AF37);
+  color: #fff;
+}
+
+.tier-badge-premium {
+  background: linear-gradient(135deg, #4A2E1B, #7a4d30);
+  color: #D4AF37;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+/* Hover glow effect */
+.hover-glow:hover {
+  box-shadow: 0 8px 40px rgba(227, 131, 79, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+/* Form input styled */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(227, 131, 79, 0.5);
+  border-radius: 12px;
+  color: #4A2E1B;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #D4AF37;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.form-input::placeholder {
+  color: rgba(74, 46, 27, 0.5);
+}
+
+/* Page background gradient */
+.page-bg {
+  background: linear-gradient(160deg, #FFD1A9 0%, #F7EDD8 30%, #E8DEC9 60%, #FFD1A9 100%);
+  min-height: 100vh;
+}
+
+/* Ornamental border */
+.ornament-border {
+  position: relative;
+}
+
+.ornament-border::before,
+.ornament-border::after {
+  content: '❧';
+  color: #D4AF37;
+  opacity: 0.6;
+  position: absolute;
+  font-size: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ornament-border::before { left: 0; }
+.ornament-border::after  { right: 0; transform: translateY(-50%) scaleX(-1); }
+
+/* Leaf pattern overlay (subtle) */
+.leaf-pattern {
+  background-image: radial-gradient(circle at 20% 30%, rgba(35, 73, 39, 0.05) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(184, 142, 47, 0.05) 0%, transparent 50%);
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+@keyframes garlandSway {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(4px) rotate(0.8deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ══════════════════════════════════════════════════════
+   🍛 CATERING-THEMED ANIMATION KEYFRAMES (12 new)
+══════════════════════════════════════════════════════ */
+
+/* 1. Steam Rising — hot food visual */
+@keyframes steamRise {
+  0%   { transform: translateY(0) scaleX(1); opacity: 0.7; }
+  40%  { transform: translateY(-18px) scaleX(1.3); opacity: 0.5; }
+  70%  { transform: translateY(-34px) scaleX(0.8); opacity: 0.25; }
+  100% { transform: translateY(-50px) scaleX(1.1); opacity: 0; }
+}
+
+/* 2. Banana Leaf Unfurl — elegant entry */
+@keyframes leafUnfurl {
+  0%   { transform: scaleX(0) rotate(-8deg); opacity: 0; transform-origin: left center; }
+  60%  { transform: scaleX(1.05) rotate(1deg); opacity: 1; transform-origin: left center; }
+  100% { transform: scaleX(1) rotate(0deg); opacity: 1; transform-origin: left center; }
+}
+
+/* 3. Ladle Stir — circular cooking motion */
+@keyframes ladleStir {
+  0%   { transform: rotate(0deg) translateX(8px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(8px) rotate(-360deg); }
+}
+
+/* 4. Spice Burst — radiating outward pop */
+@keyframes spiceBurst {
+  0%   { transform: scale(0.5); opacity: 1; }
+  60%  { transform: scale(1.15); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* 5. Diya Flicker — temple lamp authentic flicker */
+@keyframes diyaFlicker {
+  0%,100% { filter: brightness(1) drop-shadow(0 0 6px #FFB347); }
+  15%     { filter: brightness(1.3) drop-shadow(0 0 14px #FF8C00); }
+  30%     { filter: brightness(0.9) drop-shadow(0 0 4px #FFB347); }
+  50%     { filter: brightness(1.2) drop-shadow(0 0 18px #FFA500); }
+  75%     { filter: brightness(0.95) drop-shadow(0 0 8px #FF8C00); }
+}
+
+/* 6. Marigold Bloom — petals opening outward */
+@keyframes marigoldBloom {
+  0%   { transform: scale(0) rotate(-30deg); opacity: 0; }
+  50%  { transform: scale(1.1) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* 7. Kolam Draw — SVG stroke dash animation */
+@keyframes kolamDraw {
+  from { stroke-dashoffset: 600; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* 8. Thali Spin — plate entrance from centre */
+@keyframes thaliSpin {
+  0%   { transform: rotateY(90deg) scale(0.6); opacity: 0; }
+  60%  { transform: rotateY(-8deg) scale(1.05); opacity: 1; }
+  100% { transform: rotateY(0deg) scale(1); opacity: 1; }
+}
+
+/* 9. Petal Drift — marigold petals floating sideways */
+@keyframes petalDrift {
+  0%   { transform: translateX(0) translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateX(60px) translateY(80px) rotate(200deg); opacity: 0; }
+}
+
+/* 10. Aroma Wave — gentle horizontal undulation */
+@keyframes aromaWave {
+  0%,100% { transform: translateX(0) skewX(0deg); }
+  25%     { transform: translateX(6px) skewX(2deg); }
+  75%     { transform: translateX(-6px) skewX(-2deg); }
+}
+
+/* 11. Saffron Pulse — warm golden glow breathing */
+@keyframes saffronPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,160,50,0.0), 0 0 8px rgba(255,160,50,0.2); }
+  50%     { box-shadow: 0 0 0 10px rgba(255,160,50,0.0), 0 0 28px rgba(255,160,50,0.55); }
+}
+
+/* 12. Festival Entry — grand reveal slide-in fade */
+@keyframes festivalEntry {
+  0%   { opacity: 0; transform: translateY(50px) scale(0.92); filter: blur(6px); }
+  60%  { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* 13. Copper Gleam — metallic sheen sweep */
+@keyframes copperGleam {
+  0%   { background-position: -200% center; }
+  100% { background-position: 300% center; }
+}
+
+/* 14. Puja Bell Ring — side-to-side sway */
+@keyframes bellRing {
+  0%,100% { transform: rotate(0deg); transform-origin: top center; }
+  15%     { transform: rotate(14deg); transform-origin: top center; }
+  30%     { transform: rotate(-12deg); transform-origin: top center; }
+  45%     { transform: rotate(9deg); transform-origin: top center; }
+  60%     { transform: rotate(-6deg); transform-origin: top center; }
+  75%     { transform: rotate(3deg); transform-origin: top center; }
+}
+
+/* ══════════════════════════════════════════════════════
+   🎨 ANIMATION UTILITY CLASSES
+══════════════════════════════════════════════════════ */
+
+.steam-rise {
+  animation: steamRise 2.4s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+.leaf-unfurl {
+  animation: leafUnfurl 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.ladle-stir {
+  animation: ladleStir 3s linear infinite;
+  will-change: transform;
+}
+
+.spice-burst {
+  animation: spiceBurst 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.diya-flicker {
+  animation: diyaFlicker 2.6s ease-in-out infinite;
+  will-change: filter;
+}
+
+.marigold-bloom {
+  animation: marigoldBloom 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.kolam-draw {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: kolamDraw 2.5s ease-in-out forwards;
+}
+
+.thali-spin {
+  animation: thaliSpin 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.petal-drift {
+  animation: petalDrift 3.5s ease-in infinite;
+}
+
+.aroma-wave {
+  animation: aromaWave 3s ease-in-out infinite;
+}
+
+.saffron-pulse {
+  animation: saffronPulse 2.2s ease-in-out infinite;
+}
+
+.festival-entry {
+  animation: festivalEntry 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.copper-gleam {
+  background: linear-gradient(110deg, #B88E2F 20%, #F0D060 40%, #D4AF37 50%, #F0D060 60%, #B88E2F 80%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: copperGleam 4s linear infinite;
+}
+
+.bell-ring {
+  animation: bellRing 1.4s ease-in-out 1;
+}
+
+.bell-ring-loop {
+  animation: bellRing 1.4s ease-in-out infinite;
+}
+
+/* Staggered animation helpers */
+.anim-delay-1 { animation-delay: 0.1s; }
+.anim-delay-2 { animation-delay: 0.2s; }
+.anim-delay-3 { animation-delay: 0.3s; }
+.anim-delay-4 { animation-delay: 0.4s; }
+.anim-delay-5 { animation-delay: 0.5s; }
+.anim-delay-6 { animation-delay: 0.6s; }
+.anim-delay-8 { animation-delay: 0.8s; }
+.anim-delay-10 { animation-delay: 1.0s; }
+
+.font-marcellus {
+  font-family: var(--font-marcellus);
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel);
+}
+
+.font-cinzel-dec {
+  font-family: var(--font-cinzel-dec);
+}
+
+.sway-garland {
+  animation: garlandSway 6s ease-in-out infinite;
+}
+
+.flicker-lamp {
+  animation: flicker 1.8s ease-in-out infinite;
+  will-change: opacity;
+}
+
+.rotate-slow {
+  animation: rotateSlow 45s linear infinite;
+}
+
+.traditional-border {
+  border-image: linear-gradient(to right, #B88E2F, #D4AF37, #F0D060, #D4AF37, #B88E2F) 1;
+}
+
+.brass-frame {
+  border: 8px double #D4AF37;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 0 40px rgba(212, 175, 55, 0.15), 0 10px 30px rgba(74, 46, 27, 0.15);
+}
+
+.traditional-accent-bg {
+  background: linear-gradient(135deg, #6B1724 0%, #8A1E2F 100%); /* Temple Maroon */
+}
+
+.traditional-accent-text {
+  color: #6B1724;
+}
