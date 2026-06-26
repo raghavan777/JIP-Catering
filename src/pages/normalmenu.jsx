@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import MarigoldShower from "../components/MarigoldShower";
 import bananaLeafSpread from "../assets/banana_leaf_spread.png";
 import MarqueeStrip from "../components/MarqueeStrip";
+import FAQ from "../components/FAQ";
 
 const menuSections = [
   {
@@ -293,6 +294,17 @@ function NormalMenu() {
           </motion.div>
         </div>
       </section>
+
+      <FAQ faqs={[
+        { question: "What is included in JIP Caterers' Normal Menu for weddings?", answer: "The Normal Menu includes setup items (water bottle, salt, tomato sauce), accompaniments (boonthi raitha, pepper rasam, buttermilk), starters (dry jamun, veg cutlet, pulka chapathi, veg biryani), main course (white rice, wedding sambar, vatha kuzhambu, poriyal, kootu), desserts (badam payasam, ice cream), and crunchy sides (appalam, potato chips, popcorn)." },
+        { question: "Is the Normal Menu served on a banana leaf?", answer: "Yes. The Normal Menu is a traditional South Indian vegetarian leaf service — meals are served on fresh, sanitised banana leaves, maintaining the authentic style of a traditional wedding feast." },
+        { question: "How many people can the Normal Menu cater to?", answer: "The Normal Menu is ideal for small to large-scale events — from intimate family gatherings to large wedding receptions with hundreds of guests. Contact us with your guest count for a customised quote." },
+        { question: "Does the Normal Menu include desserts?", answer: "Yes! The Normal Menu includes Badam Payasam and Ice Cream as desserts, giving your guests a sweet ending to the traditional feast." },
+        { question: "What starters are served in the Normal Menu?", answer: "The Normal Menu starters include Dry Jamun, Dry Sweet, Veg Cutlet, Pulka Chapathi with Paneer Bhurji Masala, and Veg Biryani — a satisfying spread before the main course." },
+        { question: "Can I upgrade from the Normal Menu to a higher tier?", answer: "Absolutely. You can upgrade to the Elite Menu for welcome drinks and more variety, the Premium Menu for luxury live counters, or a fully Customized Menu. Our team will help you pick the right package for your event." },
+        { question: "Is the Normal Menu suitable for traditional Tamil wedding receptions?", answer: "Yes, the Normal Menu is specifically curated for traditional Tamil wedding receptions. It includes all essential dishes like special wedding sambar, kuzhambu, poriyal, kootu, and payasam — the hallmarks of a authentic South Indian feast." },
+        { question: "How do I book the Normal Menu for my event?", answer: "Simply fill out our booking form or WhatsApp us at 9092881813. Share your event type, date, location, and guest count. Our team will confirm availability and discuss the menu details with you." },
+      ]} />
 
       <Footer />
     </div>

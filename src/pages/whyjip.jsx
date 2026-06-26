@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import MarigoldShower from "../components/MarigoldShower";
 import MarqueeStrip from "../components/MarqueeStrip";
+import FAQ from "../components/FAQ";
 
 const features = [
   {
@@ -315,6 +316,17 @@ function WhyJip() {
           </motion.div>
         </div>
       </section>
+
+      <FAQ faqs={[
+        { question: "Why should I choose JIP Caterers over other caterers in Tiruvallur?", answer: "JIP Caterers stands apart through decades of heritage cooking, authentic banana leaf service, strict hygiene protocols, professionally uniformed serving staff, and a consistent track record of grand feasts that guests remember for a lifetime." },
+        { question: "Do JIP Caterers use traditional cooking methods and recipes?", answer: "Yes. Our master cooks use traditional recipes passed down through generations, cooking in pure brass and steel vessels with hand-picked regional spices to preserve authentic South Indian vegetarian flavours." },
+        { question: "What hygiene standards does JIP Caterers follow?", answer: "We follow rigorous food safety protocols — fresh ingredients sourced daily, clean preparation environment, covered storage, and hygiene-trained staff — ensuring every dish is 100% safe, pure, and delicious." },
+        { question: "Can JIP Caterers handle large events with 1000 or more guests?", answer: "Absolutely. We specialise in high-capacity catering from 100 to 5000+ guests. Whether it's a grand wedding banquet, community festival, or corporate event, we scale seamlessly without compromising quality." },
+        { question: "Does JIP Caterers provide a professional uniformed serving team?", answer: "Yes. Our well-trained, uniformly dressed catering and serving staff ensure smooth, warm food delivery and complete guest satisfaction throughout your event." },
+        { question: "What occasions does JIP Caterers specialise in?", answer: "We specialise in weddings, receptions, engagements, housewarming ceremonies, birthdays, corporate events, and community festivals across Tiruvallur, Chennai, and surrounding Tamil Nadu districts." },
+        { question: "Are the ingredients sourced fresh and locally?", answer: "Yes. We source fresh, locally available vegetables and ingredients daily. Pure farm produce cooked with traditional methods ensures your guests experience authentic South Indian vegetarian flavours in every bite." },
+        { question: "How do I trust JIP Caterers for my wedding catering?", answer: "JIP Caterers has earned trust through consistent excellence — honest pricing, reliable timelines, quality food, and treating every family with heartfelt hospitality. We treat your event as if it were our own celebration." },
+      ]} />
 
       <Footer />
     </div>

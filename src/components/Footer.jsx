@@ -10,7 +10,7 @@ function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="relative mt-16 overflow-hidden"
+      className="relative overflow-hidden"
       style={{
         background: "linear-gradient(160deg, #1a3a1e 0%, #122B15 50%, #0d2010 100%)",
       }}
@@ -24,7 +24,7 @@ function Footer() {
       }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-8 sm:py-14">
-        <div className="grid md:grid-cols-3 gap-10 items-start">
+        <div className="grid md:grid-cols-4 gap-10 items-start">
 
           {/* Brand Column */}
           <div className="text-center md:text-left">
@@ -88,6 +88,32 @@ function Footer() {
             </nav>
           </div>
 
+          {/* Address Column */}
+          <div className="text-center">
+            <h3 className="text-sm font-semibold tracking-widest uppercase mb-5" style={{ color: "#D4AF37", fontFamily: "var(--font-display)" }}>
+              Our Location
+            </h3>
+            <div className="flex flex-col items-center gap-3">
+              <span style={{ fontSize: 28 }}>📍</span>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.75)", fontFamily: "var(--font-body)" }}>
+                Pallipat Road,<br />
+                Jip Caterers in Podaturpeta,<br />
+                Tiruvallur
+              </p>
+              <a
+                href="https://maps.google.com/?q=Podaturpeta,Tiruvallur"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-semibold tracking-wider uppercase transition-colors"
+                style={{ color: "#D4AF37", textDecoration: "none", fontFamily: "var(--font-body)" }}
+                onMouseEnter={e => e.target.style.color = "#F0D060"}
+                onMouseLeave={e => e.target.style.color = "#D4AF37"}
+              >
+                View on Map →
+              </a>
+            </div>
+          </div>
+
           {/* Contact Column */}
           <div className="text-center md:text-right">
             <h3 className="text-sm font-semibold tracking-widest uppercase mb-5" style={{ color: "#D4AF37", fontFamily: "var(--font-display)" }}>
@@ -95,12 +121,12 @@ function Footer() {
             </h3>
             <div className="space-y-3 mb-6">
               <a
-                href="tel:9092881813"
+                href="tel:9445025504"
                 className="flex items-center justify-center md:justify-end gap-2 text-sm transition-colors"
                 style={{ color: "rgba(255,255,255,0.8)", textDecoration: "none", fontFamily: "var(--font-body)" }}
               >
                 <span>📞</span>
-                <span>9092881813</span>
+                <span>9445025504</span>
               </a>
               <a
                 href="tel:9551613736"
@@ -114,7 +140,7 @@ function Footer() {
 
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/919092881813"
+              href="https://wa.me/919445025504"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm shadow-lg transition-all duration-300 hover:scale-105 whatsapp-btn"

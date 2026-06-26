@@ -1,11 +1,12 @@
 import logo1 from "../assets/logo1.png";
 import heroDecoration from "../assets/hero_decoration.png";
 import foodPlatter from "../assets/food-platter.png";
+import plateAnimation from "../assets/Items_on_plate_animation_202606261849.mp4";
 import bananaLeafSpread from "../assets/banana_leaf_spread.png";
 import eliteBuffet from "../assets/elite_buffet.png";
 import premiumFeast from "../assets/premium_feast.png";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import FAQ from "../components/FAQ";
@@ -250,9 +251,22 @@ function Landing() {
                 ))}
               </motion.p>
 
-              {/* Mobile platter */}
+              {/* Mobile platter – animation video */}
               <motion.div variants={fadeUp} className="block lg:hidden w-full flex justify-center items-center my-6 pointer-events-none">
-                <img src={foodPlatter} alt="South Indian Catering" className="w-full max-w-[280px] mx-auto object-contain drop-shadow-2xl" />
+                <video
+                  ref={el => { if (el) el.playbackRate = 2.5; }}
+                  src={plateAnimation}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full max-w-[280px] mx-auto drop-shadow-2xl"
+                  style={{
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    aspectRatio: "1 / 1",
+                  }}
+                />
               </motion.div>
 
               {/* CTA Buttons — Magnetic */}
@@ -370,13 +384,27 @@ function Landing() {
                   boxShadow: "0 0 12px rgba(212,175,55,0.8)",
                 }} />
               </motion.div>
-              <motion.img
-                src={foodPlatter}
-                alt="South Indian Catering Food Platter"
-                className="thali-spin w-[500px] xl:w-[600px] object-contain select-none drop-shadow-[0_20px_40px_rgba(74,46,27,0.35)]"
+              <motion.div
+                className="thali-spin w-[500px] xl:w-[600px] select-none drop-shadow-[0_20px_40px_rgba(74,46,27,0.35)]"
                 animate={{ y: [0, -14, 0] }}
                 transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
-              />
+                style={{ borderRadius: "50%", overflow: "hidden", aspectRatio: "1 / 1" }}
+              >
+                <video
+                  ref={el => { if (el) el.playbackRate = 2.5; }}
+                  src={plateAnimation}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </motion.div>
               <div className="absolute top-4 left-1/2 -translate-x-1/2 flex gap-4 pointer-events-none" aria-hidden="true">
                 {[0, 1, 2].map(i => (
                   <div key={i} className="steam-rise w-1.5 rounded-full bg-white/40"
@@ -492,7 +520,16 @@ function Landing() {
       </section>
 
       {/* ── FAQ ────────────────────────────────────────── */}
-      <FAQ />
+      <FAQ faqs={[
+        { question: "What kind of South Indian vegetarian catering does JIP Caterers offer?", answer: "JIP Caterers specialises in premium pure South Indian vegetarian catering — serving authentic banana leaf feasts with traditional recipes, fresh ingredients, and expert heritage chefs for weddings, receptions, engagements, and all family celebrations." },
+        { question: "Which events does JIP Caterers in Tiruvallur cater for?", answer: "We cater for all occasions — weddings, wedding receptions, engagements, housewarming ceremonies, birthday parties, corporate events, religious festivals, and other large-scale family gatherings across Chennai and Tamil Nadu." },
+        { question: "What menu packages does JIP Caterers provide?", answer: "We offer four tiers: Normal Menu (traditional banana leaf service), Elite Menu (enhanced variety with welcome drinks and premium desserts), Premium Menu (luxury reception feast with live counters), and Customized Menu (fully tailored to your preferences and guest count)." },
+        { question: "Is JIP Caterers 100% vegetarian?", answer: "Yes, absolutely. JIP Caterers serves exclusively pure South Indian vegetarian food. All dishes are prepared in strict hygiene conditions using fresh farm ingredients, in traditional brass and steel vessels." },
+        { question: "Does JIP Caterers offer a live dosa counter?", answer: "Yes! Our Premium Menu includes an interactive Live Dosa Counter serving fresh hot variety dosas, along with live Ice Cream counters and Fruit Salad stations, making your event lively and memorable." },
+        { question: "How far in advance should I book JIP Caterers?", answer: "We strongly recommend booking 2 to 4 weeks before your event. During peak wedding and auspicious seasons (Panguni, Vaikasi, Thai), slots fill very quickly — early booking guarantees our best team for your celebration." },
+        { question: "What is included in the traditional banana leaf service?", answer: "Our banana leaf service includes freshly sanitised banana leaves, welcome drinks, dry starters, full multi-course main meals (sambar, kuzhambu, poriyal, kootu, rasam), desserts (payasam, ice cream), papadum, and dedicated professional serving staff." },
+        { question: "Where is JIP Caterers located and where do they serve?", answer: "JIP Caterers is based at Pallipat Road, Podaturpeta, Tiruvallur, Tamil Nadu. We serve clients across Tiruvallur, Chennai, and the surrounding districts. Contact us at 9092881813 or 9551613736 for location-based queries." },
+      ]} />
 
       {/* ── FOOTER ─────────────────────────────────────── */}
       <Footer />

@@ -5,6 +5,7 @@ import { CheckCircle } from "lucide-react";
 import Footer from "../components/Footer";
 
 import MarigoldShower from "../components/MarigoldShower";
+import FAQ from "../components/FAQ";
 
 const menuOptions = [
   {
@@ -258,6 +259,17 @@ function CustomMenu() {
           </div>
         </div>
       </section>
+
+      <FAQ faqs={[
+        { question: "Can I completely customize the catering menu with JIP Caterers?", answer: "Yes! JIP Caterers offers full menu customization. You can start from a base tier (Normal, Elite, or Premium) and add, remove, or swap any items to perfectly match your preferences, dietary restrictions, and event theme." },
+        { question: "What are the base menu tiers I can start from for customization?", answer: "You can choose from three starting points — Normal Menu (traditional banana leaf), Elite Menu (premium variety with welcome drinks), or Premium Menu (luxury with live counters and full spread) — and then customize from there." },
+        { question: "Can I add specific dishes that are not in the standard menu?", answer: "Absolutely. You can request specific regional dishes, special curries, unique starters, or particular desserts not listed in our standard menus. Our culinary team will accommodate your request based on ingredient availability." },
+        { question: "How do I communicate my custom menu requirements to JIP Caterers?", answer: "Simply select your preferred base menu on this page, list any additional custom requirements in the text box, and submit. Our team will reach out via WhatsApp or phone to confirm and finalise the details." },
+        { question: "Is there a minimum or maximum guest count for a customized menu?", answer: "We accommodate events of all sizes — from intimate gatherings of 50 guests to grand receptions of 5000+. Your customized menu is priced and planned based on the final confirmed guest count." },
+        { question: "Can I request a specific theme-based menu for my event?", answer: "Yes. We can curate a theme-based menu — traditional Chettinad spread, Kongu-style feast, festival-special dishes, or a fully vegan menu. Speak with our team to explore the options available." },
+        { question: "What is the process for getting a price quote for a customized menu?", answer: "Once you submit your requirements through the form, our team will review your selections and share a detailed quote based on the menu items chosen, the number of guests, and the event location. Quotes are typically shared within 24 hours." },
+        { question: "Can I include live food stations in my customized menu?", answer: "Yes! Live stations like Live Dosa Counter, Ice Cream Station, Fruit Salad Counter, and more can be included in your customized package. These are crowd favourites at receptions and add great energy to the event." },
+      ]} />
 
       <Footer />
     </div>

@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import MarigoldShower from "../components/MarigoldShower";
 import eliteBuffet from "../assets/elite_buffet.png";
 import MarqueeStrip from "../components/MarqueeStrip";
+import FAQ from "../components/FAQ";
 
 const menuSections = [
   {
@@ -281,6 +282,17 @@ function EliteMenu() {
           </motion.div>
         </div>
       </section>
+
+      <FAQ faqs={[
+        { question: "What is included in JIP Caterers' Elite Menu?", answer: "The Elite Menu is an enhanced package featuring Welcome Drinks (Badam Milk, Fresh Fruit Juice, Rose Milk), Special Mains (Gobi Fry, Pulka Chapathi, Veg Mini Oothappam, Idiyappam, Mushroom Biryani), banana leaf accompaniments, main course curries (sambar, kuzhambu, poriyal, kootu), rich desserts (Badam Payasam, Ice Cream, Semia Payasam), and crunchy sides." },
+        { question: "What welcome drinks are served in the Elite Menu?", answer: "The Elite Menu offers three welcome drinks — Badam Milk, Fresh Fruit Juice, and Rose Milk — served on arrival to greet your guests with warmth and flavour." },
+        { question: "How is the Elite Menu different from the Normal Menu?", answer: "The Elite Menu adds welcome drinks, special tiffin items (Gobi Fry, Oothappam, Idiyappam, Veg Stew, Mushroom Biryani), more dessert variety (Semia Payasam added), and banana leaf accompaniments like Ginger Thogayal and Fresh Curd — making it a richer, more elevated feast." },
+        { question: "Does the Elite Menu include Mushroom Biryani?", answer: "Yes! Mushroom Biryani is one of the special tiffin items in the Elite Menu, paired with accompaniments for a complete and flavourful dining experience." },
+        { question: "Is the Elite Menu served on banana leaves?", answer: "Yes. The Elite Menu follows the traditional South Indian banana leaf service, with all main course items served on fresh, sanitised banana leaves in authentic style." },
+        { question: "What desserts are served in the Elite Menu?", answer: "The Elite Menu includes Badam Payasam, Semia Payasam (Vermicelli Kheer), and Ice Cream — offering a rich, multi-dessert finish to the feast." },
+        { question: "Can I customize the Elite Menu items?", answer: "Yes. You can mix and match dishes from our Elite selection. Contact our team to discuss your preferences, dietary needs, and any special requests for a personalised Elite package." },
+        { question: "Is the Elite Menu suitable for large wedding receptions in Tamil Nadu?", answer: "Absolutely. The Elite Menu is a popular choice for Tamil wedding receptions, engagements, and special family celebrations. Its wider variety and richer spread makes it ideal for guests who expect a premium dining experience." },
+      ]} />
 
       <Footer />
     </div>

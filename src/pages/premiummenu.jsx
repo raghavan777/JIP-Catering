@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import MarigoldShower from "../components/MarigoldShower";
 import premiumFeast from "../assets/premium_feast.png";
 import MarqueeStrip from "../components/MarqueeStrip";
+import FAQ from "../components/FAQ";
 
 const menuSections = [
   {
@@ -286,6 +287,17 @@ function PremiumMenu() {
           </motion.div>
         </div>
       </section>
+
+      <FAQ faqs={[
+        { question: "What makes JIP Caterers' Premium Menu a luxury reception package?", answer: "The Premium Menu is our top-tier offering — featuring welcome drinks, veg starters, Indian breads (Chapati, Poori), Vegetable Biryani, a full banana leaf main course, multiple rich desserts, Fruit Salad with Ice Cream, and a Live Dosa Counter, delivering a lavish and unforgettable reception feast." },
+        { question: "Does the Premium Menu include a live dosa counter?", answer: "Yes! The Premium Menu features a Live Dosa Counter with a variety of hot dosas prepared fresh on the spot — one of the most popular highlights that guests love at wedding receptions." },
+        { question: "What desserts are served in the Premium Menu?", answer: "The Premium Menu includes Badam Payasam, Semia Payasam, Ice Cream, and Fruit Salad with Ice Cream — offering an indulgent multi-course dessert experience for your guests." },
+        { question: "What starters are served in the Premium Menu?", answer: "The Premium Menu starters include Veg Cutlet and Gobi Manchurian (Dry) — crispy and flavourful bites to begin the meal before the main courses are served." },
+        { question: "Does the Premium Menu include Indian breads?", answer: "Yes. The Premium Menu offers Chapati/Phulka and Poori with Potato Masala, along with Paneer Butter Masala — bringing North Indian flavours into the traditional South Indian feast." },
+        { question: "Is the Premium Menu served on banana leaves?", answer: "Yes. The main course of the Premium Menu is served in the traditional South Indian banana leaf style, including white rice, sambar, kuzhambu, rasam, poriyal, kootu, appalam, and pickles." },
+        { question: "Can the Premium Menu accommodate 500 to 1000+ guests?", answer: "Absolutely. Our Premium Menu is designed for large-scale grand receptions. We have successfully executed catering for 500 to 5000+ guests. Contact us with your guest count for a tailored package and quote." },
+        { question: "What is the difference between the Elite Menu and Premium Menu?", answer: "The Premium Menu adds a Live Dosa Counter, Poori with Potato Masala, Paneer Butter Masala, Gobi Manchurian, Fruit Salad with Ice Cream, and full leaf service with banana — making it significantly more lavish and feature-rich than the Elite Menu." },
+      ]} />
 
       <Footer />
     </div>

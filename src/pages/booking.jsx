@@ -2,10 +2,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import Footer from "../components/Footer";
+import FAQ from "../components/FAQ";
 
 import MarigoldShower from "../components/MarigoldShower";
 
-const WHATSAPP_NUMBER = "919092881813";
+const WHATSAPP_NUMBER = "919445025504";
 
 const KolamPattern = () => (
   <svg className="w-48 h-48 opacity-10 rotate-slow text-[#D4AF37] pointer-events-none select-none" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -182,10 +183,10 @@ Please contact me with more details.`;
 
           {/* Contact quick links */}
           <div className="flex flex-wrap gap-3 justify-center mt-6">
-            <a href="tel:9092881813"
+            <a href="tel:9445025504"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-105 shadow-sm"
               style={{ background: "rgba(255,255,255,0.55)", border: "1px solid rgba(74,46,27,0.15)", color: "#4A2E1B", textDecoration: "none", fontFamily: "var(--font-body)" }}>
-              📞 9092881813
+              📞 9445025504
             </a>
             <a href="tel:9551613736"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-105 shadow-sm"
@@ -372,6 +373,17 @@ Please contact me with more details.`;
           </motion.div>
         </div>
       </section>
+
+      <FAQ faqs={[
+        { question: "How do I book JIP Caterers for my wedding or event?", answer: "Fill out the booking form on this page with your name, mobile number, event type, date, location, guest count, and preferred menu. Submit the form and our team will contact you on WhatsApp within 24 hours to confirm availability and discuss details." },
+        { question: "What information do I need to provide when booking JIP Caterers?", answer: "You need to provide your full name, mobile number, event type (wedding, reception, engagement, etc.), event date, venue/location, estimated guest count, and preferred menu package. Any special food requests can also be mentioned." },
+        { question: "How early should I book JIP Caterers for a wedding reception?", answer: "We strongly recommend booking at least 2 to 4 weeks in advance. During peak auspicious seasons (Thai, Panguni, Vaikasi months), dates fill up very quickly — early booking guarantees our best team and full attention for your event." },
+        { question: "Can I book JIP Caterers via WhatsApp?", answer: "Yes. After submitting the form, our team will immediately reach out on WhatsApp to confirm details. You can also directly WhatsApp us at 9092881813 or 9445025504 for quick enquiries and booking discussions." },
+        { question: "What types of events can I book JIP Caterers for?", answer: "You can book JIP Caterers for weddings, wedding receptions, engagements, housewarming ceremonies, birthday parties, corporate lunches, community festivals, and any other large-scale family or social celebrations." },
+        { question: "Is there a minimum guest count required to book JIP Caterers?", answer: "We cater for events of all sizes. Whether it's an intimate function of 50 guests or a grand reception of 5000+, JIP Caterers can plan and execute the perfect catering experience for your event." },
+        { question: "Can I change my menu selection after making a booking?", answer: "Yes, menu changes can be accommodated if requested at least 1 week before the event date. Our team will work with you to adjust the menu based on ingredient availability and kitchen planning." },
+        { question: "Will my booking form data be saved if I exit the page?", answer: "Yes. Your form data is automatically saved in your browser so you can return and continue filling it out without losing any information. Just revisit the booking page and your previous entries will be restored." },
+      ]} />
 
       <Footer />
     </div>

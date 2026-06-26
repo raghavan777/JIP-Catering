@@ -125,7 +125,8 @@ const faqs = [
   }
 ];
 
-export default function FAQ() {
+export default function FAQ({ faqs: faqsProp }) {
+  const activeFaqs = faqsProp && faqsProp.length > 0 ? faqsProp : faqs;
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -219,7 +220,7 @@ export default function FAQ() {
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-4 text-left"
         >
-          {faqs.map((faq, index) => {
+          {activeFaqs.map((faq, index) => {
             const isOpen = activeIndex === index;
             return (
               <motion.div

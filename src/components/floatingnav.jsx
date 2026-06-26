@@ -221,11 +221,11 @@ function MobileNav() {
               📞 Quick Contact
             </p>
             <p style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "var(--font-body)" }}>
-              9092881813
+              9445025504
             </p>
           </div>
           <a
-            href="https://wa.me/919092881813"
+            href="https://wa.me/919445025504"
             target="_blank"
             rel="noopener noreferrer"
             style={{
