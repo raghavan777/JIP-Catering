@@ -120,12 +120,12 @@ function Footer() {
             </h3>
             <div className="space-y-3 mb-6">
               <a
-                href="tel:9445025504"
+                href="tel:9092881813"
                 className="flex items-center justify-center md:justify-end gap-2 text-sm transition-colors"
                 style={{ color: "rgba(255,255,255,0.8)", textDecoration: "none", fontFamily: "var(--font-body)" }}
               >
                 <span>📞</span>
-                <span>9445025504</span>
+                <span>9092881813</span>
               </a>
               <a
                 href="tel:9551613736"
@@ -139,7 +139,7 @@ function Footer() {
 
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/919445025504"
+              href="https://wa.me/919092881813"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm shadow-lg transition-all duration-300 hover:scale-105 whatsapp-btn"

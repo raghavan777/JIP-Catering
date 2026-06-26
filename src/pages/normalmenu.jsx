@@ -191,61 +191,61 @@ function NormalMenu() {
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto relative z-10"
         >
           {menuSections.map((section, index) => (
-              <motion.div
-                key={index}
-                variants={cardVariants}
-                whileHover={{
-                  y: -10,
-                  scale: 1.02,
-                  boxShadow: `0 24px 60px ${section.color}33, 0 0 0 1px ${section.color}44`,
-                }}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="rounded-3xl p-7 border-2 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-md"
-                style={{
-                  borderColor: `${section.color}35`,
-                  borderStyle: "double",
-                  borderWidth: "4px",
-                }}
-              >
-                {/* Card header */}
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-dashed" style={{ borderColor: `${section.color}33` }}>
-                  <motion.div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-xl shadow-sm"
-                    style={{ background: `linear-gradient(135deg, ${section.color}22, ${section.color}44)` }}
-                    whileHover={{ rotate: 20, scale: 1.2 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 12 }}
-                  >
-                    {section.emoji}
-                  </motion.div>
-                  <h2 className="text-xl font-bold font-marcellus tracking-wide" style={{ color: section.color }}>
-                    {section.title}
-                  </h2>
-                </div>
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              whileHover={{
+                y: -10,
+                scale: 1.02,
+                boxShadow: `0 24px 60px ${section.color}33, 0 0 0 1px ${section.color}44`,
+              }}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="rounded-3xl p-7 border-2 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-md"
+              style={{
+                borderColor: `${section.color}35`,
+                borderStyle: "double",
+                borderWidth: "4px",
+              }}
+            >
+              {/* Card header */}
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-dashed" style={{ borderColor: `${section.color}33` }}>
+                <motion.div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-xl shadow-sm"
+                  style={{ background: `linear-gradient(135deg, ${section.color}22, ${section.color}44)` }}
+                  whileHover={{ rotate: 20, scale: 1.2 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 12 }}
+                >
+                  {section.emoji}
+                </motion.div>
+                <h2 className="text-xl font-bold font-marcellus tracking-wide" style={{ color: section.color }}>
+                  {section.title}
+                </h2>
+              </div>
 
-                {/* Items — staggered slide from left */}
-                <div className="space-y-3.5">
-                  {section.items.map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.06, duration: 0.45, ease: "easeOut" }}
-                      whileHover={{ x: 4, color: section.color }}
-                      className="flex items-center gap-3 py-1 border-b border-stone-100 last:border-none"
-                    >
-                      <span className="text-lg flex-shrink-0">{item.emoji}</span>
-                      <span className="text-sm font-semibold" style={{ color: "#4A2E1B", fontFamily: "var(--font-body)" }}>
-                        {item.name}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+              {/* Items — staggered slide from left */}
+              <div className="space-y-3.5">
+                {section.items.map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.06, duration: 0.45, ease: "easeOut" }}
+                    whileHover={{ x: 4, color: section.color }}
+                    className="flex items-center gap-3 py-1 border-b border-stone-100 last:border-none"
+                  >
+                    <span className="text-lg flex-shrink-0">{item.emoji}</span>
+                    <span className="text-sm font-semibold" style={{ color: "#4A2E1B", fontFamily: "var(--font-body)" }}>
+                      {item.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </section>
 
