@@ -94,7 +94,6 @@ function Footer() {
               Our Location
             </h3>
             <div className="flex flex-col items-center gap-3">
-              <span style={{ fontSize: 28 }}>📍</span>
               <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.75)", fontFamily: "var(--font-body)" }}>
                 Pallipat Road,<br />
                 Jip Caterers in Podaturpeta,<br />
