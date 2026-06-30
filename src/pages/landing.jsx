@@ -10,6 +10,7 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import FAQ from "../components/FAQ";
+import PageSEO from "../components/PageSEO";
 
 import MarigoldShower from "../components/MarigoldShower";
 import MenuCards from "../components/MenuCards";
@@ -148,8 +149,75 @@ function Landing() {
   const heroRef = useRef(null);
   const { scrollY } = useScroll();
 
+  const homeSEOSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "JIP Caterers",
+      "url": "https://www.jipcaterers.com",
+      "description": "Premium South Indian vegetarian catering in Tiruvallur and Chennai. Traditional banana leaf service for weddings, receptions, engagements, and all celebrations.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.jipcaterers.com/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "JIP Caterers",
+      "image": "https://www.jipcaterers.com/logo1.png",
+      "url": "https://www.jipcaterers.com",
+      "telephone": "+91-9092881813",
+      "priceRange": "$$",
+      "servesCuisine": "South Indian Vegetarian",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pallipat Road, Podaturpeta",
+        "addressLocality": "Tiruvallur",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "602001",
+        "addressCountry": "IN"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": "13.1450", "longitude": "79.9129" },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "08:00", "closes": "21:00"
+      }],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "120", "bestRating": "5" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is JIP Caterers?", "acceptedAnswer": { "@type": "Answer", "text": "JIP Caterers is a premium South Indian vegetarian catering service based in Tiruvallur, Tamil Nadu. We specialise in traditional banana leaf service for weddings, receptions, engagements, housewarmings, birthdays, and corporate events across Chennai and Tamil Nadu." } },
+        { "@type": "Question", "name": "What menu packages does JIP Caterers offer?", "acceptedAnswer": { "@type": "Answer", "text": "JIP Caterers offers four menu tiers: Normal Menu (authentic traditional banana leaf feast), Elite Menu (enhanced variety with welcome drinks), Premium Menu (luxury buffet with live counters), and Customized Menu (tailored to your preferences and budget)." } },
+        { "@type": "Question", "name": "Is JIP Caterers 100% vegetarian?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. JIP Caterers serves exclusively pure South Indian vegetarian food. All dishes are prepared in strict hygiene conditions using fresh farm ingredients and traditional brass and steel vessels. No non-vegetarian items are ever used." } },
+        { "@type": "Question", "name": "Where is JIP Caterers located?", "acceptedAnswer": { "@type": "Answer", "text": "JIP Caterers is located at Pallipat Road, Podaturpeta, Tiruvallur, Tamil Nadu – 602001. We serve clients across Tiruvallur, Chennai, Poonamallee, Ambattur, Avadi, Redhills, and surrounding districts." } },
+        { "@type": "Question", "name": "How can I contact JIP Caterers?", "acceptedAnswer": { "@type": "Answer", "text": "You can reach JIP Caterers by calling 9092881813 or 9551613736, or via WhatsApp at +91-9092881813. Our team is available daily from 8 AM to 9 PM." } },
+        { "@type": "Question", "name": "What types of events does JIP Caterers serve?", "acceptedAnswer": { "@type": "Answer", "text": "JIP Caterers provides professional catering for weddings, wedding receptions, engagements, housewarming ceremonies, birthday parties, corporate events, religious festivals, and all large-scale family gatherings across Tamil Nadu." } },
+        { "@type": "Question", "name": "How far in advance should I book JIP Caterers?", "acceptedAnswer": { "@type": "Answer", "text": "We strongly recommend booking 2 to 4 weeks before your event. During peak wedding and auspicious seasons (Panguni, Vaikasi, Thai), slots fill very quickly — early booking guarantees our best team for your celebration." } },
+        { "@type": "Question", "name": "Does JIP Caterers provide traditional banana leaf service?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. JIP Caterers is known for authentic traditional banana leaf service (ilai saapadu). Fresh sanitised banana leaves, multi-course South Indian vegetarian meals with sambar, kuzhambu, poriyal, kootu, rasam, payasam, and professional serving staff." } },
+      ]
+    }
+  ];
+
   return (
     <div className="relative overflow-x-hidden min-h-screen" style={{ cursor: "none" }}>
+      <PageSEO
+        title="Premium South Indian Vegetarian Catering in Chennai & Tiruvallur"
+        description="JIP Caterers — premium South Indian vegetarian catering in Tiruvallur & Chennai. Traditional banana leaf service for weddings, receptions, engagements, housewarmings & birthdays. Call 9092881813."
+        keywords="south indian vegetarian catering, veg catering services chennai, wedding catering tiruvallur, banana leaf catering service, premium veg menu packages, jip caterers, customized catering, housewarming catering, wedding catering chennai, catering near me tiruvallur"
+        canonical="https://www.jipcaterers.com"
+        ogTitle="JIP Caterers | Premium South Indian Vegetarian Catering in Chennai"
+        ogDescription="Premium South Indian vegetarian catering with traditional banana leaf service and customized menus for weddings, receptions, engagements, and corporate events."
+        ogUrl="https://www.jipcaterers.com"
+        structuredData={homeSEOSchemas}
+      />
 
 
       {/* Steam wisps */}

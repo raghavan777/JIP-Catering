@@ -3,10 +3,71 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import Footer from "../components/Footer";
 import FAQ from "../components/FAQ";
-
 import MarigoldShower from "../components/MarigoldShower";
+import PageSEO from "../components/PageSEO";
 
 const WHATSAPP_NUMBER = "919092881813";
+
+const bookingSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Book JIP Caterers – Enquiry & Booking",
+    "url": "https://www.jipcaterers.com/booking",
+    "description": "Book JIP Caterers for your wedding, reception, engagement, housewarming or celebration in Tiruvallur and Chennai. Fill out the booking form or WhatsApp us at +91-9092881813 for instant confirmation.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jipcaterers.com" },
+        { "@type": "ListItem", "position": 2, "name": "Book Now", "item": "https://www.jipcaterers.com/booking" }
+      ]
+    },
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "JIP Caterers",
+      "telephone": "+91-9092881813",
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "08:00",
+        "closes": "21:00"
+      }]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Catering Booking & Enquiry",
+    "url": "https://www.jipcaterers.com/booking",
+    "provider": {
+      "@type": "Organization",
+      "name": "JIP Caterers",
+      "telephone": "+91-9092881813",
+      "url": "https://www.jipcaterers.com"
+    },
+    "potentialAction": {
+      "@type": "ReservationAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.jipcaterers.com/booking",
+        "inLanguage": ["en", "ta"],
+        "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How do I book JIP Caterers for my wedding or event?", "acceptedAnswer": { "@type": "Answer", "text": "Fill out the booking form on this page with your name, mobile number, event type, date, location, guest count, and preferred menu. Submit the form and our team will contact you on WhatsApp within 24 hours to confirm availability and discuss details." } },
+      { "@type": "Question", "name": "How early should I book JIP Caterers for a wedding reception?", "acceptedAnswer": { "@type": "Answer", "text": "We strongly recommend booking at least 2 to 4 weeks in advance. During peak auspicious seasons (Thai, Panguni, Vaikasi months), dates fill up very quickly — early booking guarantees our best team and full attention for your event." } },
+      { "@type": "Question", "name": "Can I book JIP Caterers via WhatsApp?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. After submitting the form, our team will immediately reach out on WhatsApp to confirm details. You can also directly WhatsApp us at +91-9092881813 for quick enquiries and booking discussions." } },
+      { "@type": "Question", "name": "What is JIP Caterers' WhatsApp number for booking?", "acceptedAnswer": { "@type": "Answer", "text": "You can WhatsApp JIP Caterers at +91-9092881813 for instant booking enquiries, menu consultations, and event confirmations. Our team responds daily from 8 AM to 9 PM." } },
+      { "@type": "Question", "name": "What types of events can I book JIP Caterers for?", "acceptedAnswer": { "@type": "Answer", "text": "You can book JIP Caterers for weddings, wedding receptions, engagements, housewarming ceremonies, birthday parties, corporate lunches, community festivals, and any other large-scale family or social celebrations." } },
+      { "@type": "Question", "name": "Does JIP Caterers serve outside Tiruvallur and Chennai?", "acceptedAnswer": { "@type": "Answer", "text": "JIP Caterers primarily serves Tiruvallur, Chennai, Poonamallee, Ambattur, Avadi, and Redhills. For events in other locations across Tamil Nadu, contact us at 9092881813 to discuss feasibility and logistics." } }
+    ]
+  }
+];
 
 const KolamPattern = () => (
   <svg className="w-48 h-48 opacity-10 rotate-slow text-[#D4AF37] pointer-events-none select-none" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -131,6 +192,18 @@ Please contact me with more details.`;
 
   return (
     <div className="relative">
+      <PageSEO
+        title="Book JIP Caterers | Wedding & Event Catering Enquiry – Tiruvallur & Chennai"
+        description="Book JIP Caterers for your wedding, reception, engagement or housewarming. Fill our form or WhatsApp +91-9092881813. Serving Tiruvallur, Chennai, Poonamallee, Ambattur, Avadi & surrounding areas."
+        keywords="book jip caterers, catering booking tiruvallur, wedding catering enquiry chennai, whatsapp catering booking, event catering form, housewarming catering booking, engagement catering tiruvallur"
+        canonical="https://www.jipcaterers.com/booking"
+        ogTitle="Book JIP Caterers | Wedding & Event Catering Enquiry"
+        ogDescription="Book premium South Indian vegetarian catering for your wedding or celebration. WhatsApp +91-9092881813 or fill our booking form. JIP Caterers, Tiruvallur."
+        ogUrl="https://www.jipcaterers.com/booking"
+        ogType="website"
+        structuredData={bookingSchemas}
+        breadcrumbs={[{ name: "Book Now", url: "https://www.jipcaterers.com/booking" }]}
+      />
       {/* Swaying Leaf Garland */}
 
 

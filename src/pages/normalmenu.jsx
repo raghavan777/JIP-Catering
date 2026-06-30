@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-
 import MarigoldShower from "../components/MarigoldShower";
 import bananaLeafSpread from "../assets/banana_leaf_spread.png";
 import MarqueeStrip from "../components/MarqueeStrip";
 import FAQ from "../components/FAQ";
+import PageSEO from "../components/PageSEO";
 
 const menuSections = [
   {
@@ -109,11 +109,83 @@ const KolamPattern = () => (
   </svg>
 );
 
+const normalMenuSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Normal Menu – JIP Caterers",
+    "url": "https://www.jipcaterers.com/normal-menu",
+    "description": "JIP Caterers Normal Menu: Traditional South Indian vegetarian banana leaf service for weddings. Includes wedding sambar, vatha kuzhambu, poriyal, kootu, badam payasam, ice cream, and crunchy sides.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jipcaterers.com" },
+        { "@type": "ListItem", "position": 2, "name": "Normal Menu", "item": "https://www.jipcaterers.com/normal-menu" }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Normal Menu – Traditional Banana Leaf Catering",
+    "description": "Traditional South Indian vegetarian banana leaf service for weddings and receptions. Includes setup items, accompaniments, starters (veg biryani, pulka chapathi, veg cutlet), main course (wedding sambar, vatha kuzhambu, poriyal, kootu), desserts (badam payasam, ice cream), and crunchy sides.",
+    "brand": { "@type": "Brand", "name": "JIP Caterers" },
+    "category": "Catering Service",
+    "offers": {
+      "@type": "Offer",
+      "seller": { "@type": "Organization", "name": "JIP Caterers" },
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Tiruvallur", "Chennai", "Tamil Nadu"]
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Normal Menu Items",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Special Wedding Sambar" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Small Onion Vatha Kuzhambu" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Poriyal" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Kootu" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Veg Biryani" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Pulka Chapathi with Paneer Bhurji Masala" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Badam Payasam" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Ice Cream" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Veg Cutlet" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Boonthi Raitha" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Pepper Rasam" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Butter Milk" } }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is included in JIP Caterers' Normal Menu for weddings?", "acceptedAnswer": { "@type": "Answer", "text": "The Normal Menu includes setup items (water bottle, salt, tomato sauce), accompaniments (boonthi raitha, pepper rasam, buttermilk), starters (dry jamun, veg cutlet, pulka chapathi, paneer bhurji masala, veg biryani), main course (white rice, wedding sambar, vatha kuzhambu, poriyal, kootu), desserts (badam payasam, ice cream), and crunchy sides (appalam, potato chips, popcorn)." } },
+      { "@type": "Question", "name": "Is the Normal Menu served on a banana leaf?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Normal Menu is a traditional South Indian vegetarian leaf service — meals are served on fresh, sanitised banana leaves, maintaining the authentic style of a traditional wedding feast." } },
+      { "@type": "Question", "name": "Is the Normal Menu suitable for traditional Tamil wedding receptions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the Normal Menu is specifically curated for traditional Tamil wedding receptions. It includes all essential dishes like special wedding sambar, kuzhambu, poriyal, kootu, and payasam — the hallmarks of an authentic South Indian feast." } },
+      { "@type": "Question", "name": "Can I upgrade from the Normal Menu to a higher tier?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. You can upgrade to the Elite Menu for welcome drinks and more variety, the Premium Menu for luxury live counters, or a fully Customized Menu. Our team will help you pick the right package for your event." } }
+    ]
+  }
+];
+
 function NormalMenu() {
   const navigate = useNavigate();
 
   return (
     <div className="relative">
+      <PageSEO
+        title="Normal Menu | Traditional Wedding Banana Leaf Catering – JIP Caterers"
+        description="JIP Caterers Normal Menu: Authentic South Indian vegetarian banana leaf service for weddings in Tiruvallur & Chennai. Includes wedding sambar, kuzhambu, poriyal, kootu, badam payasam & ice cream. Call 9092881813."
+        keywords="normal menu jip caterers, banana leaf catering wedding, south indian vegetarian wedding menu, wedding sambar catering, vatha kuzhambu wedding, traditional leaf service tiruvallur, badam payasam catering"
+        canonical="https://www.jipcaterers.com/normal-menu"
+        ogTitle="Normal Menu | Traditional Banana Leaf Wedding Catering"
+        ogDescription="Authentic South Indian vegetarian banana leaf service for weddings — wedding sambar, kuzhambu, poriyal, kootu, payasam and more. JIP Caterers, Tiruvallur."
+        ogUrl="https://www.jipcaterers.com/normal-menu"
+        ogType="product"
+        structuredData={normalMenuSchemas}
+        breadcrumbs={[{ name: "Normal Menu", url: "https://www.jipcaterers.com/normal-menu" }]}
+      />
       {/* Swaying Garland decoration */}
 
 

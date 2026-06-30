@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-
 import MarigoldShower from "../components/MarigoldShower";
 import premiumFeast from "../assets/premium_feast.png";
 import MarqueeStrip from "../components/MarqueeStrip";
 import FAQ from "../components/FAQ";
+import PageSEO from "../components/PageSEO";
 
 const menuSections = [
   {
@@ -120,11 +120,75 @@ const KolamPattern = () => (
   </svg>
 );
 
+const premiumMenuSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Premium Menu – JIP Caterers",
+    "url": "https://www.jipcaterers.com/premium-menu",
+    "description": "JIP Caterers Premium Menu: Luxury South Indian vegetarian wedding reception package with live dosa counter, welcome drinks, veg starters, Indian breads, Vegetable Biryani, full banana leaf service, multiple desserts, and fruit salad station."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Premium Menu – Luxury South Indian Vegetarian Wedding Catering",
+    "description": "Luxury wedding reception catering package. Includes welcome drinks, veg starters (Veg Cutlet, Gobi Manchurian), Indian breads (Chapati, Poori), Paneer Butter Masala, Vegetable Biryani, full banana leaf service, premium desserts (Badam Payasam, Semia Payasam, Ice Cream), Fruit Salad with Ice Cream, and Live Dosa Counter.",
+    "brand": { "@type": "Brand", "name": "JIP Caterers" },
+    "category": "Catering Service",
+    "offers": {
+      "@type": "Offer",
+      "seller": { "@type": "Organization", "name": "JIP Caterers" },
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Tiruvallur", "Chennai", "Tamil Nadu"]
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Premium Menu Items",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Live Dosa Counter" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Ice Cream Counter" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Fruit Salad with Ice Cream" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Veg Cutlet" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Gobi Manchurian" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Chapati / Phulka" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Poori with Potato Masala" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Paneer Butter Masala" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Vegetable Biryani" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Badam Payasam" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Semia Payasam" } }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What makes JIP Caterers' Premium Menu a luxury reception package?", "acceptedAnswer": { "@type": "Answer", "text": "The Premium Menu is our top-tier offering — featuring welcome drinks, veg starters, Indian breads (Chapati, Poori), Vegetable Biryani, a full banana leaf main course, multiple rich desserts, Fruit Salad with Ice Cream, and a Live Dosa Counter, delivering a lavish and unforgettable reception feast." } },
+      { "@type": "Question", "name": "Does the Premium Menu include a live dosa counter?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! The Premium Menu features a Live Dosa Counter with a variety of hot dosas prepared fresh on the spot — one of the most popular highlights that guests love at wedding receptions." } },
+      { "@type": "Question", "name": "What is the difference between the Elite Menu and Premium Menu?", "acceptedAnswer": { "@type": "Answer", "text": "The Premium Menu adds a Live Dosa Counter, Poori with Potato Masala, Paneer Butter Masala, Gobi Manchurian, Fruit Salad with Ice Cream, and full leaf service with banana — making it significantly more lavish and feature-rich than the Elite Menu." } },
+      { "@type": "Question", "name": "Can the Premium Menu accommodate 500 to 1000+ guests?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Our Premium Menu is designed for large-scale grand receptions. We have successfully executed catering for 500 to 5000+ guests. Contact us with your guest count for a tailored package and quote." } }
+    ]
+  }
+];
+
 function PremiumMenu() {
   const navigate = useNavigate();
 
   return (
     <div className="relative">
+      <PageSEO
+        title="Premium Menu | Luxury South Indian Vegetarian Wedding Reception – JIP Caterers"
+        description="JIP Caterers Premium Menu: Luxury vegetarian wedding reception with live dosa counter, gobi manchurian, poori, paneer butter masala, fruit salad station & banana leaf service. Tiruvallur & Chennai."
+        keywords="premium menu jip caterers, luxury vegetarian wedding catering, live dosa counter catering, gobi manchurian catering, fruit salad ice cream wedding, luxury reception catering tiruvallur, paneer butter masala catering"
+        canonical="https://www.jipcaterers.com/premium-menu"
+        ogTitle="Premium Menu | Luxury South Indian Vegetarian Wedding Reception Catering"
+        ogDescription="Luxury vegetarian reception with live dosa counter, fruit salad station, Indian breads, gobi manchurian, and full banana leaf service. JIP Caterers, Tiruvallur."
+        ogUrl="https://www.jipcaterers.com/premium-menu"
+        ogType="product"
+        structuredData={premiumMenuSchemas}
+        breadcrumbs={[{ name: "Premium Menu", url: "https://www.jipcaterers.com/premium-menu" }]}
+      />
       {/* Swaying Garland */}
 
 

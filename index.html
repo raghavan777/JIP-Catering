@@ -38,35 +38,77 @@
       "@context": "https://schema.org",
       "@type": "CateringService",
       "name": "JIP Caterers",
-      "alternateName": "JIP Catering Services",
-      "description": "Premium South Indian vegetarian catering services with traditional banana leaf service. Catering for weddings, receptions, engagements, housewarmings, birthdays, and corporate events.",
+      "alternateName": ["JIP Catering Services", "JIP Caterers Tiruvallur", "JIP Catering Chennai"],
+      "description": "Premium South Indian vegetarian catering services in Tiruvallur and Chennai. Traditional banana leaf service for weddings, receptions, engagements, housewarmings, birthdays, and corporate events across Tamil Nadu.",
       "url": "https://www.jipcaterers.com",
-      "logo": "https://www.jipcaterers.com/logo1.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.jipcaterers.com/logo1.png",
+        "width": 300,
+        "height": 300
+      },
+      "image": "https://www.jipcaterers.com/logo1.png",
       "telephone": "+91-9092881813",
+      "alternateTelephone": "+91-9551613736",
+      "email": "info@jipcaterers.com",
       "priceRange": "$$",
-      "servesCuisine": "South Indian Vegetarian",
+      "servesCuisine": ["South Indian Vegetarian", "Tamil Brahmin Cuisine", "Banana Leaf Cuisine"],
+      "currenciesAccepted": "INR",
+      "paymentAccepted": ["Cash", "Bank Transfer", "UPI", "Google Pay", "PhonePe"],
+      "hasMap": "https://maps.google.com/?q=JIP+Caterers+Tiruvallur+Tamil+Nadu",
+      "sameAs": [
+        "https://wa.me/919092881813"
+      ],
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Chennai",
+        "streetAddress": "Pallipat Road, Podaturpeta",
+        "addressLocality": "Tiruvallur",
         "addressRegion": "Tamil Nadu",
+        "postalCode": "602001",
         "addressCountry": "IN"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "13.1450",
+        "longitude": "79.9129"
+      },
       "areaServed": [
+        { "@type": "City", "name": "Tiruvallur" },
+        { "@type": "City", "name": "Chennai" },
+        { "@type": "City", "name": "Poonamallee" },
+        { "@type": "City", "name": "Ambattur" },
+        { "@type": "City", "name": "Avadi" },
+        { "@type": "City", "name": "Redhills" },
+        { "@type": "AdministrativeArea", "name": "Tamil Nadu" }
+      ],
+      "openingHoursSpecification": [
         {
-          "@type": "AdministrativeArea",
-          "name": "Chennai"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "Tamil Nadu"
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "08:00",
+          "closes": "21:00"
         }
       ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "120",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "contactPoint": [
         {
           "@type": "ContactPoint",
           "telephone": "+91-9092881813",
           "contactType": "customer service",
-          "availableLanguage": ["English", "Tamil"]
+          "contactOption": "TollFree",
+          "availableLanguage": ["English", "Tamil"],
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "08:00",
+            "closes": "21:00"
+          }
         },
         {
           "@type": "ContactPoint",
@@ -74,7 +116,45 @@
           "contactType": "sales",
           "availableLanguage": ["English", "Tamil"]
         }
-      ]
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "JIP Caterers Menu Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Normal Menu",
+              "description": "Traditional South Indian vegetarian banana leaf service with wedding sambar, kuzhambu, poriyal, kootu, badam payasam and ice cream."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Elite Menu",
+              "description": "Enhanced vegetarian catering package with welcome drinks, gobi fry, mushroom biryani, idiyappam, premium desserts and extra sides."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Premium Menu",
+              "description": "Luxury reception catering with live dosa counter, fruit salad station, ice cream counter, multiple desserts, Indian breads and full leaf service."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Customized Menu",
+              "description": "Fully tailored vegetarian catering package built to your guest preferences, event theme, and budget requirements."
+            }
+          }
+        ]
+      }
     }
     </script>
 

@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-
 import MarigoldShower from "../components/MarigoldShower";
 import eliteBuffet from "../assets/elite_buffet.png";
 import MarqueeStrip from "../components/MarqueeStrip";
 import FAQ from "../components/FAQ";
+import PageSEO from "../components/PageSEO";
 
 const menuSections = [
   {
@@ -116,11 +116,74 @@ const KolamPattern = () => (
   </svg>
 );
 
+const eliteMenuSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Elite Menu – JIP Caterers",
+    "url": "https://www.jipcaterers.com/elite-menu",
+    "description": "JIP Caterers Elite Menu: Enhanced South Indian vegetarian catering with welcome drinks (badam milk, rose milk, fruit juice), gobi fry, mushroom biryani, idiyappam, banana leaf service, premium desserts (badam payasam, semia payasam, ice cream), and crunchy sides."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Elite Menu – Enhanced South Indian Vegetarian Catering",
+    "description": "Enhanced vegetarian catering package for weddings and receptions. Includes welcome drinks (Badam Milk, Fruit Juice, Rose Milk), tiffins (Gobi Fry, Veg Mini Oothappam, Idiyappam, Veg Stew, Mushroom Biryani), banana leaf accompaniments, main course (sambar, kuzhambu, poriyal, kootu), desserts (Badam Payasam, Semia Payasam, Ice Cream), and crunchy sides.",
+    "brand": { "@type": "Brand", "name": "JIP Caterers" },
+    "category": "Catering Service",
+    "offers": {
+      "@type": "Offer",
+      "seller": { "@type": "Organization", "name": "JIP Caterers" },
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "areaServed": ["Tiruvallur", "Chennai", "Tamil Nadu"]
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Elite Menu Items",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Badam Milk" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Fresh Fruit Juice" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Rose Milk" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Gobi Fry" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Mushroom Biryani" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Idiyappam with Veg Stew" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Veg Mini Oothappam" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Badam Payasam" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Semia Payasam" } },
+        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Ice Cream" } }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is the Elite Menu at JIP Caterers?", "acceptedAnswer": { "@type": "Answer", "text": "The Elite Menu is an enhanced vegetarian catering package featuring welcome drinks (Badam Milk, Fruit Juice, Rose Milk), tiffin items (Gobi Fry, Idiyappam, Mushroom Biryani), full banana leaf accompaniments, premium desserts (Badam Payasam, Semia Payasam, Ice Cream), and extra crunchy sides." } },
+      { "@type": "Question", "name": "What welcome drinks are included in the Elite Menu?", "acceptedAnswer": { "@type": "Answer", "text": "The Elite Menu includes three welcome drinks: Badam Milk, Fresh Fruit Juice, and Rose Milk — served to guests as they arrive, creating a warm and festive first impression." } },
+      { "@type": "Question", "name": "How is the Elite Menu different from the Normal Menu?", "acceptedAnswer": { "@type": "Answer", "text": "The Elite Menu expands the Normal Menu with welcome drinks, additional tiffin items (Gobi Fry, Veg Mini Oothappam, Idiyappam, Veg Stew, Mushroom Biryani), more dessert variety, and extra sides — offering a richer, more celebratory dining experience." } },
+      { "@type": "Question", "name": "Is the Elite Menu served on banana leaves?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Elite Menu follows the traditional South Indian banana leaf service, with all main course items served on fresh, sanitised banana leaves in authentic style." } }
+    ]
+  }
+];
+
 function EliteMenu() {
   const navigate = useNavigate();
 
   return (
     <div className="relative">
+      <PageSEO
+        title="Elite Menu | Enhanced South Indian Vegetarian Wedding Catering – JIP Caterers"
+        description="JIP Caterers Elite Menu: Enhanced vegetarian catering with welcome drinks (badam milk, rose milk), mushroom biryani, idiyappam, banana leaf service & premium desserts. Perfect for weddings in Tiruvallur & Chennai."
+        keywords="elite menu jip caterers, enhanced vegetarian catering, welcome drinks catering wedding, mushroom biryani catering, idiyappam catering, premium wedding menu tiruvallur, semia payasam catering"
+        canonical="https://www.jipcaterers.com/elite-menu"
+        ogTitle="Elite Menu | Enhanced South Indian Vegetarian Wedding Catering"
+        ogDescription="Enhanced vegetarian catering with welcome drinks, mushroom biryani, idiyappam, premium desserts and banana leaf service. JIP Caterers, Tiruvallur."
+        ogUrl="https://www.jipcaterers.com/elite-menu"
+        ogType="product"
+        structuredData={eliteMenuSchemas}
+        breadcrumbs={[{ name: "Elite Menu", url: "https://www.jipcaterers.com/elite-menu" }]}
+      />
       {/* Swaying Garland */}
 
 

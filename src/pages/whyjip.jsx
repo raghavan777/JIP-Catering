@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import MarigoldShower from "../components/MarigoldShower";
 import MarqueeStrip from "../components/MarqueeStrip";
 import FAQ from "../components/FAQ";
+import PageSEO from "../components/PageSEO";
 
 const features = [
   {
@@ -91,11 +92,64 @@ const KolamPattern = () => (
   </svg>
 );
 
+const whyJipSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Why Choose JIP Caterers",
+    "url": "https://www.jipcaterers.com/why-jip",
+    "description": "Learn why JIP Caterers is the most trusted South Indian vegetarian catering service in Tiruvallur and Chennai — heritage cooking, banana leaf service, professional staff, and consistent excellence.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.jipcaterers.com" },
+        { "@type": "ListItem", "position": 2, "name": "Why JIP Caterers", "item": "https://www.jipcaterers.com/why-jip" }
+      ]
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "Why Choose JIP Caterers",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Traditional Banana Leaf Service", "description": "Authentic South Indian vegetarian dining served in the sacred banana leaf style — a timeless tradition for every wedding and celebration." },
+        { "@type": "ListItem", "position": 2, "name": "Quality Vegetarian Food", "description": "Fresh ingredients, absolute hygiene, and rich traditional recipes passed down through generations, cooked in pure brass and steel vessels." },
+        { "@type": "ListItem", "position": 3, "name": "Wedding & Reception Specialists", "description": "Decades of catering weddings, receptions, engagements, housewarmings, and grand family celebrations across South India." },
+        { "@type": "ListItem", "position": 4, "name": "Professional Service Team", "description": "Well-trained, uniformly dressed catering and serving staff ensuring warm, smooth food delivery and complete guest satisfaction." },
+        { "@type": "ListItem", "position": 5, "name": "Customizable Menus", "description": "Tailor your feast from our Normal, Elite, or Premium selection. Build your own package with our culinary experts." },
+        { "@type": "ListItem", "position": 6, "name": "Trusted Hospitality", "description": "Building relationships through consistency, delicious taste, honest pricing, and treating every guest as family." }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Why should I choose JIP Caterers over other caterers in Tiruvallur?", "acceptedAnswer": { "@type": "Answer", "text": "JIP Caterers stands apart through decades of heritage cooking, authentic banana leaf service, strict hygiene protocols, professionally uniformed serving staff, and a consistent track record of grand feasts that guests remember for a lifetime." } },
+      { "@type": "Question", "name": "Do JIP Caterers use traditional cooking methods and recipes?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our master cooks use traditional recipes passed down through generations, cooking in pure brass and steel vessels with hand-picked regional spices to preserve authentic South Indian vegetarian flavours." } },
+      { "@type": "Question", "name": "What hygiene standards does JIP Caterers follow?", "acceptedAnswer": { "@type": "Answer", "text": "We follow rigorous food safety protocols — fresh ingredients sourced daily, clean preparation environment, covered storage, and hygiene-trained staff — ensuring every dish is 100% safe, pure, and delicious." } },
+      { "@type": "Question", "name": "Can JIP Caterers handle large events with 1000 or more guests?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. We specialise in high-capacity catering from 100 to 5000+ guests. Whether it's a grand wedding banquet, community festival, or corporate event, we scale seamlessly without compromising quality." } },
+      { "@type": "Question", "name": "Does JIP Caterers provide a professional uniformed serving team?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our well-trained, uniformly dressed catering and serving staff ensure smooth, warm food delivery and complete guest satisfaction throughout your event." } },
+      { "@type": "Question", "name": "Are the ingredients sourced fresh and locally?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We source fresh, locally available vegetables and ingredients daily. Pure farm produce cooked with traditional methods ensures your guests experience authentic South Indian vegetarian flavours in every bite." } }
+    ]
+  }
+];
+
 function WhyJip() {
   const navigate = useNavigate();
 
   return (
     <div className="relative">
+      <PageSEO
+        title="Why Choose JIP Caterers | Heritage Catering Specialists Tiruvallur"
+        description="Discover why JIP Caterers is Tiruvallur's most trusted South Indian vegetarian catering service — heritage recipes, banana leaf service, professional staff, and 100% vegetarian food for all celebrations."
+        keywords="why choose jip caterers, best caterer tiruvallur, south indian heritage catering, banana leaf service wedding, professional catering team, vegetarian catering specialists chennai, traditional catering tamil nadu"
+        canonical="https://www.jipcaterers.com/why-jip"
+        ogTitle="Why Choose JIP Caterers | Heritage Catering Specialists"
+        ogDescription="Decades of heritage cooking, traditional banana leaf service, professional staff, and strict hygiene — JIP Caterers transforms your celebration into a grand, memorable feast."
+        ogUrl="https://www.jipcaterers.com/why-jip"
+        ogType="article"
+        structuredData={whyJipSchemas}
+        breadcrumbs={[{ name: "Why JIP Caterers", url: "https://www.jipcaterers.com/why-jip" }]}
+      />
       {/* Swaying Leaf Garland */}
 
 

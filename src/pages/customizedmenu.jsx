@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
 import Footer from "../components/Footer";
-
 import MarigoldShower from "../components/MarigoldShower";
 import FAQ from "../components/FAQ";
+import PageSEO from "../components/PageSEO";
 
 const menuOptions = [
   {
@@ -55,6 +55,43 @@ const KolamPattern = () => (
   </svg>
 );
 
+const customMenuSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Customized Catering Menu – JIP Caterers",
+    "url": "https://www.jipcaterers.com/custom-menu",
+    "description": "Build your own South Indian vegetarian catering package with JIP Caterers. Choose from Normal, Elite, or Premium base tiers and customize dishes, portions, and special items to perfectly match your event, guest preferences, and budget.",
+    "provider": {
+      "@type": "Organization",
+      "name": "JIP Caterers",
+      "telephone": "+91-9092881813",
+      "address": { "@type": "PostalAddress", "addressLocality": "Tiruvallur", "addressRegion": "Tamil Nadu", "addressCountry": "IN" }
+    },
+    "serviceType": "Custom Vegetarian Catering",
+    "areaServed": ["Tiruvallur", "Chennai", "Tamil Nadu"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Customization Base Packages",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Normal Menu (Customizable)", "description": "Traditional banana leaf service as the base, customized with your preferred dishes and portions." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elite Menu (Customizable)", "description": "Enhanced vegetarian package as the base, with welcome drinks and additional tiffin items customizable." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Premium Menu (Customizable)", "description": "Luxury reception package as the base, with live counters and all items fully customizable." } }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is the Customized Menu at JIP Caterers?", "acceptedAnswer": { "@type": "Answer", "text": "The Customized Menu allows you to build a completely tailored vegetarian catering package. Choose from Normal, Elite, or Premium menu tiers as a base and customize specific dishes, add live counters, adjust portions, and add special items to match your guest preferences and budget." } },
+      { "@type": "Question", "name": "Can I mix items from different menu tiers at JIP Caterers?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. JIP Caterers allows you to mix elements from the Normal, Elite, and Premium menus to create your ideal package. Our culinary team will work with you to build a cohesive, balanced menu for your event." } },
+      { "@type": "Question", "name": "How do I start the customization process with JIP Caterers?", "acceptedAnswer": { "@type": "Answer", "text": "Simply contact JIP Caterers at 9092881813 or WhatsApp us. Share your event details (date, type, guest count), shortlist preferred dishes from our menu tiers, and our team will create a custom menu proposal and quotation." } },
+      { "@type": "Question", "name": "What is the price for a Customized Menu at JIP Caterers?", "acceptedAnswer": { "@type": "Answer", "text": "Pricing for the Customized Menu depends on your selected dishes, guest count, event type, and service requirements. Contact us at 9092881813 for a personalised quotation tailored to your celebration." } }
+    ]
+  }
+];
+
 function CustomMenu() {
   const navigate = useNavigate();
   const [selectedMenu, setSelectedMenu] = useState("");
@@ -62,6 +99,18 @@ function CustomMenu() {
 
   return (
     <div className="relative">
+      <PageSEO
+        title="Customized Menu | Tailored South Indian Vegetarian Catering – JIP Caterers"
+        description="Build your own vegetarian catering package with JIP Caterers. Choose Normal, Elite, or Premium as a base and customize dishes, portions & special items for your wedding, engagement or celebration in Tiruvallur & Chennai."
+        keywords="customized catering menu, tailored vegetarian catering, custom wedding menu chennai, personalized catering tiruvallur, build your own catering package, custom veg menu south indian"
+        canonical="https://www.jipcaterers.com/custom-menu"
+        ogTitle="Customized Menu | Tailored South Indian Vegetarian Catering"
+        ogDescription="Create your perfect vegetarian catering package. Mix and match dishes from Normal, Elite, or Premium menus — fully tailored to your event and guest preferences. JIP Caterers."
+        ogUrl="https://www.jipcaterers.com/custom-menu"
+        ogType="product"
+        structuredData={customMenuSchemas}
+        breadcrumbs={[{ name: "Customized Menu", url: "https://www.jipcaterers.com/custom-menu" }]}
+      />
       {/* Swaying Leaf Garland */}
 
 
