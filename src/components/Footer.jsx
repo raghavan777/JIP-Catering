@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo1_transparent.png";
 
 function Footer() {
   const navigate = useNavigate();
@@ -27,23 +28,19 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-10 items-start">
 
           {/* Brand Column */}
-          <div className="text-center md:text-left">
-            <h2
-              className="text-3xl font-bold text-gold-shimmer mb-3"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              <span style={{
-                background: "linear-gradient(90deg, #B88E2F, #D4AF37, #F0D060, #D4AF37, #B88E2F)",
-                backgroundSize: "200% auto",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                animation: "textShimmer 3s linear infinite"
-              }}>
-                Jip Caterers
-              </span>
-            </h2>
-            <div className="w-16 h-0.5 mb-4 md:mx-0 mx-auto" style={{ background: "linear-gradient(90deg, #D4AF37, transparent)" }} />
+          <div className="text-center">
+            <img
+              src={logo}
+              alt="Jip Caterers Logo"
+              className="mb-3 mx-auto"
+              style={{
+                width: "180px",
+                height: "auto",
+                objectFit: "contain",
+                display: "block",
+              }}
+            />
+            <div className="w-16 h-0.5 mb-4 mx-auto" style={{ background: "linear-gradient(90deg, transparent, #D4AF37, transparent)" }} />
             <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)", fontFamily: "var(--font-body)" }}>
               Authentic South Indian vegetarian catering for weddings, receptions, engagements, birthday parties, corporate events &amp; all special celebrations.
             </p>
@@ -179,7 +176,7 @@ function Footer() {
             © 2026 Jip Caterers. All Rights Reserved.
           </p>
           <p className="text-xs" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "var(--font-body)" }}>
-            Serving with love since inception 🌿
+            Serving with love Since 2015 🌿
           </p>
         </div>
       </div>

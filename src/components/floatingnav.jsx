@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Home, User, Utensils, Star, Crown, ClipboardList, Bell, X, Menu } from "lucide-react";
+import logo from "../assets/logo1_transparent.png";
 
 const items = [
   { id: 0, icon: <Home size={20} />, label: "Home", path: "/", emoji: "🏠" },
@@ -146,9 +147,16 @@ function MobileNav() {
           borderBottom: "1px solid rgba(227,131,79,0.14)",
         }}>
           <div>
-            <p className="font-cinzel font-bold text-lg tracking-widest" style={{ color: "#4A2E1B" }}>
-              JIP CATERERS
-            </p>
+            <img
+              src={logo}
+              alt="Jip Caterers Logo"
+              style={{
+                width: "140px",
+                height: "auto",
+                objectFit: "contain",
+                display: "block",
+              }}
+            />
             <p className="text-xs font-medium" style={{ color: "#E3834F", fontFamily: "var(--font-body)" }}>
               🌿 South Indian Heritage Catering
             </p>

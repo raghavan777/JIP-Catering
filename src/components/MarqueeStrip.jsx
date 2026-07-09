@@ -1,9 +1,9 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const items = [
   "Authentic South Indian",
   "Wedding Catering",
-  "Since Inception",
+  "Since 2015",
   "JIP Caterers",
   "Banana Leaf Feasts",
   "Traditional Recipes",

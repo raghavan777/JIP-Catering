@@ -5,7 +5,7 @@ const STATS = [
   { value: 500,   suffix: "+", label: "Events Catered",    icon: "🎊" },
   { value: 15,    suffix: "+", label: "Years of Tradition", icon: "🌿" },
   { value: 10000, suffix: "+", label: "Guests Delighted",   icon: "👥" },
-  { value: 100,   suffix: "%", label: "Pure Vegetarian",    icon: "🍃" },
+  { value: 3,     suffix: "",  label: "Menu Tiers (Veg & Non-Veg)", icon: "🍽" },
 ];
 
 function useCountUp(target, active, duration = 1800) {

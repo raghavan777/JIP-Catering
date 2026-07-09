@@ -96,6 +96,7 @@ function Booking() {
       location: "",
       guests: "",
       menuType: "",
+      foodPreference: "",
       foodItems: "",
       requirements: "",
     };
@@ -121,6 +122,7 @@ function Booking() {
     if (!formData.location.trim()) newErrors.location = "Please enter the event location";
     if (!formData.guests.trim()) newErrors.guests = "Please enter guest count";
     if (!formData.menuType) newErrors.menuType = "Please select a menu type";
+    if (!formData.foodPreference) newErrors.foodPreference = "Please select Veg or Non-Veg preference";
     return newErrors;
   };
 
@@ -158,6 +160,7 @@ Number of Guests: ${formData.guests}
 Menu Details:
 
 Selected Menu Type: ${formData.menuType}
+Food Preference: ${formData.foodPreference || "Not specified"}
 Required Items / Custom Menu:
 ${formData.foodItems || "Not specified"}
 
@@ -180,6 +183,7 @@ Please contact me with more details.`;
       location: "",
       guests: "",
       menuType: "",
+      foodPreference: "",
       foodItems: "",
       requirements: "",
     });
@@ -194,11 +198,11 @@ Please contact me with more details.`;
     <div className="relative">
       <PageSEO
         title="Book JIP Caterers | Wedding & Event Catering Enquiry – Tiruvallur & Chennai"
-        description="Book JIP Caterers for your wedding, reception, engagement or housewarming. Fill our form or WhatsApp +91-9092881813. Serving Tiruvallur, Chennai, Poonamallee, Ambattur, Avadi & surrounding areas."
+        description="Book JIP Caterers for your wedding, reception, engagement or housewarming. Fill our form or WhatsApp +91-9092881813. Serving Tiruvallur, Chennai, Poonamallee, Ambattur, Avadi & surrounding areas. Both Veg and Non-Veg menus available."
         keywords="book jip caterers, catering booking tiruvallur, wedding catering enquiry chennai, whatsapp catering booking, event catering form, housewarming catering booking, engagement catering tiruvallur"
         canonical="https://www.jipcaterers.com/booking"
         ogTitle="Book JIP Caterers | Wedding & Event Catering Enquiry"
-        ogDescription="Book premium South Indian vegetarian catering for your wedding or celebration. WhatsApp +91-9092881813 or fill our booking form. JIP Caterers, Tiruvallur."
+        ogDescription="Book premium South Indian Veg & Non-Veg catering for your wedding or celebration. WhatsApp +91-9092881813 or fill our booking form. JIP Caterers, Tiruvallur."
         ogUrl="https://www.jipcaterers.com/booking"
         ogType="website"
         structuredData={bookingSchemas}
@@ -391,6 +395,47 @@ Please contact me with more details.`;
                   <option>Customized Menu</option>
                 </select>
                 {errors.menuType && <p className="text-xs mt-1 text-red-500 font-semibold">{errors.menuType}</p>}
+              </div>
+
+              {/* Food Preference – Veg / Non-Veg */}
+              <div className="mb-6">
+                <label style={labelStyle}>🌿 Food Preference <span style={{ color: "#E3834F" }}>*</span></label>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  {[
+                    { value: "Pure Veg", icon: "🌿", label: "Pure Veg", activeColor: "#234927", activeBg: "linear-gradient(135deg, #234927, #3a6e3f)" },
+                    { value: "Non-Veg", icon: "🍗", label: "Non-Veg", activeColor: "#6B1724", activeBg: "linear-gradient(135deg, #6B1724, #8B1E2F)" },
+                    { value: "Both Veg & Non-Veg", icon: "🍽", label: "Both Veg & Non-Veg", activeColor: "#B88E2F", activeBg: "linear-gradient(135deg, #B88E2F, #D4AF37)" },
+                  ].map((opt) => {
+                    const isActive = formData.foodPreference === opt.value;
+                    return (
+                      <motion.button
+                        key={opt.value}
+                        type="button"
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.96 }}
+                        onClick={() => {
+                          const updated = { ...formData, foodPreference: opt.value };
+                          setFormData(updated);
+                          localStorage.setItem("jip_booking_form", JSON.stringify(updated));
+                          if (errors.foodPreference) setErrors({ ...errors, foodPreference: "" });
+                        }}
+                        className="flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm transition-all border-2 border-none"
+                        style={{
+                          background: isActive ? opt.activeBg : "rgba(255,255,255,0.5)",
+                          color: isActive ? "#fff" : opt.activeColor,
+                          border: isActive ? "none" : `2px solid ${opt.activeColor}40`,
+                          boxShadow: isActive ? `0 4px 16px ${opt.activeColor}40` : "none",
+                          cursor: "pointer",
+                          fontFamily: "var(--font-body)",
+                        }}
+                      >
+                        <span className="text-base">{opt.icon}</span>
+                        <span>{opt.label}</span>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+                {errors.foodPreference && <p className="text-xs mt-2 text-red-500 font-semibold">{errors.foodPreference}</p>}
               </div>
 
               {/* Food Items */}

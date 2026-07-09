@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import MarigoldShower from "../components/MarigoldShower";
@@ -7,92 +8,127 @@ import MarqueeStrip from "../components/MarqueeStrip";
 import FAQ from "../components/FAQ";
 import PageSEO from "../components/PageSEO";
 
-const menuSections = [
+// ── VEG MENU DATA (from JP Caterers Veg Menu card – Menu 1 Classic) ──────────
+const vegMenuSections = [
   {
-    title: "Setup Items",
-    emoji: "🍃",
+    title: "Welcome Menu",
+    emoji: "🥤",
     color: "#234927",
-    bg: "rgba(35,73,39,0.06)",
+    bg: "rgba(35,73,39,0.07)",
     items: [
-      { name: "Water Bottle", emoji: "💧" },
-      { name: "Salt Powder", emoji: "🧂" },
-      { name: "Tomato Sauce", emoji: "🍅" },
+      { name: "Mixed Fruit Sharbat", emoji: "🍹", img: "/images/menu/nonveg/fruit-sharbat.png" },
+      { name: "Bonda with Chutney", emoji: "🟤", img: "/images/menu/nonveg/bonda-chutney.png" },
     ],
   },
   {
-    title: "Accompaniments & Drinks",
-    emoji: "🥛",
-    color: "#2563EB",
-    bg: "rgba(37,99,235,0.04)",
+    title: "Traditional Banana Leaf Feast",
+    emoji: "🍃",
+    color: "#2D6A4F",
+    bg: "rgba(45,106,79,0.06)",
     items: [
-      { name: "Boonthi Raitha", emoji: "🥣" },
-      { name: "Pepper Rasam", emoji: "🍲" },
-      { name: "Butter Milk", emoji: "🥛" },
+      { name: "Banana Leaf", emoji: "🍃", img: "/images/menu/banana-leaf.png" },
+      { name: "Water Pot", emoji: "💧", img: "/images/menu/water-bottle.png" },
+      { name: "Salt Powder", emoji: "🧂", img: "/images/menu/salt-powder.png" },
+      { name: "Pickle or Thuvaiyal", emoji: "🫙", img: "/images/menu/pickle.png" },
     ],
   },
   {
-    title: "Starters & Tiffin",
-    emoji: "🍽",
+    title: "Sweets & Snacks",
+    emoji: "🍬",
     color: "#B45309",
     bg: "rgba(180,83,9,0.05)",
     items: [
-      { name: "Dry Jamun", emoji: "🍮" },
-      { name: "Dry Sweet", emoji: "🍬" },
-      { name: "Veg Cutlet", emoji: "🥙" },
-      { name: "Pulka Chapathi", emoji: "🫓" },
-      { name: "Paneer Bhurji Masala", emoji: "🧀" },
-      { name: "Veg Biryani", emoji: "🍚" },
+      { name: "Dry Sweet", emoji: "🍮", img: "/images/menu/dry-sweet.png" },
+      { name: "Kara Boondi", emoji: "🟡", img: "/images/menu/potato-chips.png" },
     ],
   },
   {
-    title: "Main Course Curries",
-    emoji: "🍛",
+    title: "Breads & Main Dishes",
+    emoji: "🫓",
     color: "#B91C1C",
     bg: "rgba(185,28,28,0.04)",
     items: [
-      { name: "White Rice", emoji: "🍚" },
-      { name: "Special Wedding Sambar", emoji: "🍜" },
-      { name: "Small Onion Vatha Kuzhambu", emoji: "🍲" },
-      { name: "Poriyal – 1", emoji: "🥦" },
-      { name: "Poriyal – 2", emoji: "🥕" },
-      { name: "Kootu", emoji: "🫘" },
+      { name: "Chapati / Roomali Roti", emoji: "🫓", img: "/images/menu/pulka-chapathi.png" },
+      { name: "Butter Masala", emoji: "🧡", img: "/images/menu/paneer-butter-masala.png" },
+      { name: "Special Veg Biryani", emoji: "🍚", img: "/images/menu/veg-biryani.png" },
+      { name: "Pachadi", emoji: "🥗", img: "/images/menu/mango-patchadi.png" },
     ],
   },
   {
-    title: "Desserts",
-    emoji: "🍨",
+    title: "Rice & Accompaniments",
+    emoji: "🍛",
+    color: "#1D4ED8",
+    bg: "rgba(29,78,216,0.04)",
+    items: [
+      { name: "Steamed Rice", emoji: "🍚", img: "/images/menu/white-rice.png" },
+      { name: "Special Vatha Kuzhambu", emoji: "🍲", img: "/images/menu/vatha-kuzhambu.png" },
+      { name: "Sambar", emoji: "🍜", img: "/images/menu/wedding-sambar.png" },
+      { name: "Rasam", emoji: "☕", img: "/images/menu/pepper-rasam.png" },
+      { name: "Buttermilk", emoji: "🥛", img: "/images/menu/butter-milk.png" },
+      { name: "Poriyal / Kootu", emoji: "🥦", img: "/images/menu/kootu.png" },
+    ],
+  },
+  {
+    title: "Dessert",
+    emoji: "🍮",
     color: "#BE185D",
     bg: "rgba(190,24,93,0.04)",
     items: [
-      { name: "Badam Payasam", emoji: "🍵" },
-      { name: "Ice Cream", emoji: "🍦" },
-    ],
-  },
-  {
-    title: "Crunchy Sides",
-    emoji: "🍿",
-    color: "#EA580C",
-    bg: "rgba(234,88,12,0.05)",
-    items: [
-      { name: "Appalam / Fryums", emoji: "🫓" },
-      { name: "Potato Chips", emoji: "🥔" },
-      { name: "Pop Corn", emoji: "🍿" },
-    ],
-  },
-  {
-    title: "Final Touches",
-    emoji: "🌿",
-    color: "#15803D",
-    bg: "rgba(21,128,61,0.06)",
-    items: [
-      { name: "Mango Patchadi", emoji: "🥭" },
+      { name: "Payasam", emoji: "🍵", img: "/images/menu/payasam.png" },
     ],
   },
 ];
 
+// ── NON-VEG MENU DATA (from JP Caterers Non-Veg Menu card – Menu 1 Non Veg) ──
+const nonVegMenuSections = [
+  {
+    title: "Welcome Drinks",
+    emoji: "☕",
+    color: "#6B1724",
+    bg: "rgba(107,23,36,0.07)",
+    items: [
+      { name: "Tea or Coffee", emoji: "☕", img: "/images/menu/nonveg/jeera-tea.png" },
+      { name: "Vadai with Chutney", emoji: "🟤", img: "/images/menu/nonveg/vadai-chutney.png" },
+    ],
+  },
+  {
+    title: "On the Banana Leaf",
+    emoji: "🍃",
+    color: "#7B3407",
+    bg: "rgba(123,52,7,0.06)",
+    items: [
+      { name: "Banana Leaf", emoji: "🍃", img: "/images/menu/banana-leaf.png" },
+      { name: "Water Pot", emoji: "💧", img: "/images/menu/water-bottle.png" },
+      { name: "Garlic Pickle", emoji: "🫙", img: "/images/menu/nonveg/garlic-pickle.png" },
+    ],
+  },
+  {
+    title: "Sweet",
+    emoji: "🍮",
+    color: "#92400E",
+    bg: "rgba(146,64,14,0.06)",
+    items: [
+      { name: "Bread Halwa", emoji: "🍮", img: "/images/menu/nonveg/bread-halwa.png" },
+    ],
+  },
+  {
+    title: "Non-Veg Specials",
+    emoji: "🍗",
+    color: "#991B1B",
+    bg: "rgba(153,27,27,0.06)",
+    items: [
+      { name: "Chicken 555", emoji: "🍗", img: "/images/menu/nonveg/chicken-555.png" },
+      { name: "Chicken Biryani or Mutton Biryani", emoji: "🍚", img: "/images/menu/nonveg/chicken-biryani.png" },
+      { name: "OTC Pachadi", emoji: "🥗", img: "/images/menu/nonveg/otc-pachadi.png" },
+      { name: "Kathirikai Masala", emoji: "🍆", img: "/images/menu/nonveg/kathirikai-masala.png" },
+    ],
+  },
+];
+
+// ── ANIMATION VARIANTS ────────────────────────────────────────────────────────
 const containerVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.08 } },
 };
 
 const cardVariants = {
@@ -109,13 +145,46 @@ const KolamPattern = () => (
   </svg>
 );
 
+// ── MENU ITEM CARD WITH IMAGE ─────────────────────────────────────────────────
+function MenuItemRow({ item, idx, accentColor }) {
+  return (
+    <motion.div
+      key={idx}
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: idx * 0.06, duration: 0.45, ease: "easeOut" }}
+      className="flex items-center gap-3 py-2 border-b border-stone-100 last:border-none"
+    >
+      <div
+        className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 border"
+        style={{ borderColor: `${accentColor}30` }}
+      >
+        <img
+          src={item.img}
+          alt={item.name}
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+            e.currentTarget.parentElement.innerHTML = `<span class="text-xl flex items-center justify-center w-full h-full">${item.emoji}</span>`;
+          }}
+        />
+      </div>
+      <span className="text-sm font-semibold" style={{ color: "#4A2E1B", fontFamily: "var(--font-body)" }}>
+        {item.name}
+      </span>
+    </motion.div>
+  );
+}
+
+// ── SCHEMA DATA ───────────────────────────────────────────────────────────────
 const normalMenuSchemas = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Normal Menu – JIP Caterers",
     "url": "https://www.jipcaterers.com/normal-menu",
-    "description": "JIP Caterers Normal Menu: Traditional South Indian vegetarian banana leaf service for weddings. Includes wedding sambar, vatha kuzhambu, poriyal, kootu, badam payasam, ice cream, and crunchy sides.",
+    "description": "JIP Caterers Normal Menu: South Indian Wedding Feast with Veg and Non-Veg options. Veg: Mixed Fruit Sharbat, Bonda, Special Veg Biryani, Payasam. Non-Veg: Chicken 555, Chicken/Mutton Biryani, Kathirikai Masala.",
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -124,70 +193,32 @@ const normalMenuSchemas = [
       ]
     }
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Normal Menu – Traditional Banana Leaf Catering",
-    "description": "Traditional South Indian vegetarian banana leaf service for weddings and receptions. Includes setup items, accompaniments, starters (veg biryani, pulka chapathi, veg cutlet), main course (wedding sambar, vatha kuzhambu, poriyal, kootu), desserts (badam payasam, ice cream), and crunchy sides.",
-    "brand": { "@type": "Brand", "name": "JIP Caterers" },
-    "category": "Catering Service",
-    "offers": {
-      "@type": "Offer",
-      "seller": { "@type": "Organization", "name": "JIP Caterers" },
-      "priceCurrency": "INR",
-      "availability": "https://schema.org/InStock",
-      "areaServed": ["Tiruvallur", "Chennai", "Tamil Nadu"]
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Normal Menu Items",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Special Wedding Sambar" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Small Onion Vatha Kuzhambu" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Poriyal" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Kootu" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Veg Biryani" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Pulka Chapathi with Paneer Bhurji Masala" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Badam Payasam" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Ice Cream" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Veg Cutlet" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Boonthi Raitha" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Pepper Rasam" } },
-        { "@type": "Offer", "itemOffered": { "@type": "MenuItem", "name": "Butter Milk" } }
-      ]
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "What is included in JIP Caterers' Normal Menu for weddings?", "acceptedAnswer": { "@type": "Answer", "text": "The Normal Menu includes setup items (water bottle, salt, tomato sauce), accompaniments (boonthi raitha, pepper rasam, buttermilk), starters (dry jamun, veg cutlet, pulka chapathi, paneer bhurji masala, veg biryani), main course (white rice, wedding sambar, vatha kuzhambu, poriyal, kootu), desserts (badam payasam, ice cream), and crunchy sides (appalam, potato chips, popcorn)." } },
-      { "@type": "Question", "name": "Is the Normal Menu served on a banana leaf?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Normal Menu is a traditional South Indian vegetarian leaf service — meals are served on fresh, sanitised banana leaves, maintaining the authentic style of a traditional wedding feast." } },
-      { "@type": "Question", "name": "Is the Normal Menu suitable for traditional Tamil wedding receptions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the Normal Menu is specifically curated for traditional Tamil wedding receptions. It includes all essential dishes like special wedding sambar, kuzhambu, poriyal, kootu, and payasam — the hallmarks of an authentic South Indian feast." } },
-      { "@type": "Question", "name": "Can I upgrade from the Normal Menu to a higher tier?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. You can upgrade to the Elite Menu for welcome drinks and more variety, the Premium Menu for luxury live counters, or a fully Customized Menu. Our team will help you pick the right package for your event." } }
-    ]
-  }
 ];
 
 function NormalMenu() {
   const navigate = useNavigate();
+  const [menuType, setMenuType] = useState("veg");
+
+  const isVeg = menuType === "veg";
+  const sections = isVeg ? vegMenuSections : nonVegMenuSections;
+  const vegColor = "#234927";
+  const nonVegColor = "#6B1724";
+  const activeColor = isVeg ? vegColor : nonVegColor;
 
   return (
     <div className="relative">
       <PageSEO
-        title="Normal Menu | Traditional Wedding Banana Leaf Catering – JIP Caterers"
-        description="JIP Caterers Normal Menu: Authentic South Indian vegetarian banana leaf service for weddings in Tiruvallur & Chennai. Includes wedding sambar, kuzhambu, poriyal, kootu, badam payasam & ice cream. Call 9092881813."
-        keywords="normal menu jip caterers, banana leaf catering wedding, south indian vegetarian wedding menu, wedding sambar catering, vatha kuzhambu wedding, traditional leaf service tiruvallur, badam payasam catering"
+        title="Normal Menu | Veg & Non-Veg Wedding Catering – JIP Caterers"
+        description="JIP Caterers Normal Menu: South Indian Wedding Feast with Veg and Non-Veg options. Veg: Bonda, Special Veg Biryani, Payasam. Non-Veg: Chicken 555, Biryani, Kathirikai Masala. Call 9092881813."
+        keywords="normal menu jip caterers, veg non veg wedding menu, south indian wedding catering, chicken biryani wedding, mutton biryani catering, banana leaf service tiruvallur"
         canonical="https://www.jipcaterers.com/normal-menu"
-        ogTitle="Normal Menu | Traditional Banana Leaf Wedding Catering"
-        ogDescription="Authentic South Indian vegetarian banana leaf service for weddings — wedding sambar, kuzhambu, poriyal, kootu, payasam and more. JIP Caterers, Tiruvallur."
+        ogTitle="Normal Menu | Veg & Non-Veg Wedding Catering"
+        ogDescription="South Indian Wedding Feast – Choose Veg or Non-Veg. JIP Caterers, Tiruvallur."
         ogUrl="https://www.jipcaterers.com/normal-menu"
         ogType="product"
         structuredData={normalMenuSchemas}
         breadcrumbs={[{ name: "Normal Menu", url: "https://www.jipcaterers.com/normal-menu" }]}
       />
-      {/* Swaying Garland decoration */}
-
 
       {/* ── HEADER ───────────────────────────────────── */}
       <section
@@ -195,36 +226,31 @@ function NormalMenu() {
         style={{ background: "linear-gradient(160deg, #FFD1A9 0%, #FAF1DF 50%, #E8DEC9 100%)" }}
       >
         <MarigoldShower />
-
         <div className="absolute top-12 right-20 pointer-events-none select-none">
           <KolamPattern />
         </div>
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center relative z-10 text-left">
-          {/* Left - Text details */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
           >
             <span className="tier-badge tier-badge-normal mb-5 inline-flex leaf-unfurl">
-              🍃 Normal Menu
+              🍃 Menu 1 – Classic
             </span>
-            <h1
-              className="mt-4 text-4xl md:text-5xl font-bold font-cinzel leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#234927] to-[#122B15] festival-entry"
-            >
+            <h1 className="mt-4 text-4xl md:text-5xl font-bold font-cinzel leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#234927] to-[#122B15] festival-entry">
               Wedding Reception
               <span className="block text-gold-shimmer font-cinzel">
-                Veg Leaf Service
+                South Indian Feast
               </span>
             </h1>
             <div className="mt-4 h-0.5 w-32 traditional-border border-b-2" />
             <p className="text-lg mt-6 font-serif leading-relaxed" style={{ color: "#7a5c40", fontFamily: "var(--font-serif)" }}>
-              Authentic traditional banana leaf vegetarian service, showcasing the purest flavours of regional heritage. Perfectly curated for large family gatherings and weddings.
+              Authentic South Indian wedding feast served on a traditional banana leaf. Available in both Pure Veg and Non-Veg options — choose your preference below.
             </p>
           </motion.div>
 
-          {/* Right - Banana Leaf Meal Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -234,7 +260,8 @@ function NormalMenu() {
             <img
               src={bananaLeafSpread}
               alt="Traditional Banana Leaf Feast"
-              className="w-full max-w-md rounded-3xl object-cover border-4 shadow-xl border-[#234927]"
+              className="w-full max-w-md rounded-3xl object-cover border-4 shadow-xl"
+              style={{ borderColor: activeColor }}
             />
           </motion.div>
         </div>
@@ -243,9 +270,9 @@ function NormalMenu() {
       {/* ── MARQUEE ──────────────────────────────────── */}
       <MarqueeStrip />
 
-      {/* ── MENU GRID ───────────────────────────────── */}
+      {/* ── TOGGLE + MENU GRID ───────────────────────── */}
       <section
-        className="py-10 sm:py-20 px-4 sm:px-16 lg:px-28 relative overflow-hidden"
+        className="py-10 sm:py-20 px-4 sm:px-8 lg:px-28 relative overflow-hidden"
         style={{ background: "linear-gradient(180deg, #E8DEC9 0%, #FAF1DF 50%, #FFD1A9 100%)" }}
       >
         <div className="absolute top-1/4 left-10 pointer-events-none opacity-10">
@@ -255,70 +282,133 @@ function NormalMenu() {
           <KolamPattern />
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto relative z-10"
-        >
-          {menuSections.map((section, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover={{
-                y: -10,
-                scale: 1.02,
-                boxShadow: `0 24px 60px ${section.color}33, 0 0 0 1px ${section.color}44`,
-              }}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-3xl p-7 border-2 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-md"
+        {/* ── VEG / NON-VEG TOGGLE ─────────────────── */}
+        <div className="flex justify-center mb-10 relative z-10">
+          <div
+            className="flex rounded-full p-1 shadow-lg border-2"
+            style={{ background: "rgba(255,255,255,0.7)", borderColor: "rgba(212,175,55,0.4)", backdropFilter: "blur(12px)" }}
+          >
+            {/* VEG BUTTON */}
+            <motion.button
+              id="toggle-veg-normal"
+              onClick={() => setMenuType("veg")}
+              whileTap={{ scale: 0.95 }}
+              className="relative px-5 sm:px-8 py-3 rounded-full font-bold text-sm sm:text-base tracking-wide transition-all duration-300 flex items-center gap-2 border-none"
               style={{
-                borderColor: `${section.color}35`,
-                borderStyle: "double",
-                borderWidth: "4px",
+                background: isVeg ? `linear-gradient(135deg, ${vegColor}, #3a6e3f)` : "transparent",
+                color: isVeg ? "#fff" : vegColor,
+                cursor: "pointer",
+                boxShadow: isVeg ? "0 4px 20px rgba(35,73,39,0.4)" : "none",
+                fontFamily: "var(--font-body)",
               }}
             >
-              {/* Card header */}
-              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-dashed" style={{ borderColor: `${section.color}33` }}>
-                <motion.div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-xl shadow-sm"
-                  style={{ background: `linear-gradient(135deg, ${section.color}22, ${section.color}44)` }}
-                  whileHover={{ rotate: 20, scale: 1.2 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 12 }}
-                >
-                  {section.emoji}
-                </motion.div>
-                <h2 className="text-xl font-bold font-marcellus tracking-wide" style={{ color: section.color }}>
-                  {section.title}
-                </h2>
-              </div>
+              <span className="text-lg">🌿</span>
+              <span>Pure Veg</span>
+              {isVeg && (
+                <motion.span
+                  layoutId="activeIndicatorNormal"
+                  className="absolute inset-0 rounded-full"
+                  style={{ zIndex: -1 }}
+                />
+              )}
+            </motion.button>
 
-              {/* Items — staggered slide from left */}
-              <div className="space-y-3.5">
-                {section.items.map((item, idx) => (
+            {/* NON-VEG BUTTON */}
+            <motion.button
+              id="toggle-nonveg-normal"
+              onClick={() => setMenuType("nonveg")}
+              whileTap={{ scale: 0.95 }}
+              className="relative px-5 sm:px-8 py-3 rounded-full font-bold text-sm sm:text-base tracking-wide transition-all duration-300 flex items-center gap-2 border-none"
+              style={{
+                background: !isVeg ? `linear-gradient(135deg, ${nonVegColor}, #8B1E2F)` : "transparent",
+                color: !isVeg ? "#fff" : nonVegColor,
+                cursor: "pointer",
+                boxShadow: !isVeg ? "0 4px 20px rgba(107,23,36,0.4)" : "none",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              <span className="text-lg">🍗</span>
+              <span>Non-Veg</span>
+            </motion.button>
+          </div>
+        </div>
+
+        {/* ── MENU TYPE LABEL ──────────────────────────── */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={menuType + "-label"}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="text-center mb-8 relative z-10"
+          >
+            <span
+              className="inline-block px-6 py-2 rounded-full text-sm font-bold tracking-widest uppercase border"
+              style={{
+                background: isVeg ? "rgba(35,73,39,0.1)" : "rgba(107,23,36,0.1)",
+                color: activeColor,
+                borderColor: `${activeColor}40`,
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              {isVeg ? "🌿 Pure Vegetarian Menu" : "🍗 Non-Vegetarian Menu"}
+            </span>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* ── MENU CARDS ────────────────────────────────── */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={menuType}
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
+            className={`grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 max-w-7xl mx-auto relative z-10 ${
+              isVeg ? "lg:grid-cols-3" : "lg:grid-cols-2"
+            }`}
+          >
+            {sections.map((section, index) => (
+              <motion.div
+                key={`${menuType}-${index}`}
+                variants={cardVariants}
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                  boxShadow: `0 20px 50px ${section.color}33, 0 0 0 1px ${section.color}33`,
+                }}
+                className="rounded-3xl p-5 sm:p-7 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-md"
+                style={{
+                  borderColor: `${section.color}40`,
+                  borderStyle: "double",
+                  borderWidth: "4px",
+                }}
+              >
+                {/* Card header */}
+                <div className="flex items-center gap-3 mb-5 pb-4 border-b border-dashed" style={{ borderColor: `${section.color}33` }}>
                   <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.06, duration: 0.45, ease: "easeOut" }}
-                    whileHover={{ x: 4, color: section.color }}
-                    className="flex items-center gap-3 py-1 border-b border-stone-100 last:border-none"
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-xl shadow-sm flex-shrink-0"
+                    style={{ background: `linear-gradient(135deg, ${section.color}22, ${section.color}44)` }}
+                    whileHover={{ rotate: 20, scale: 1.2 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 12 }}
                   >
-                    <span className="text-lg flex-shrink-0">{item.emoji}</span>
-                    <span className="text-sm font-semibold" style={{ color: "#4A2E1B", fontFamily: "var(--font-body)" }}>
-                      {item.name}
-                    </span>
+                    {section.emoji}
                   </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+                  <h2 className="text-base sm:text-xl font-bold font-marcellus tracking-wide" style={{ color: section.color }}>
+                    {section.title}
+                  </h2>
+                </div>
+
+                {/* Items with images */}
+                <div className="space-y-1">
+                  {section.items.map((item, idx) => (
+                    <MenuItemRow key={idx} item={item} idx={idx} accentColor={section.color} />
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </section>
 
       {/* ── CTA STRIP ─────────────────────────────────── */}
@@ -328,7 +418,7 @@ function NormalMenu() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-10 border-4 brass-frame rounded-3xl"
+            className="p-8 sm:p-10 border-4 brass-frame rounded-3xl"
           >
             <motion.div
               animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
@@ -338,10 +428,10 @@ function NormalMenu() {
               🍃
             </motion.div>
             <h3 className="text-2xl font-bold font-marcellus mb-3" style={{ color: "#234927" }}>
-              Ready to Book the Normal Menu?
+              Ready to Book the Classic Menu?
             </h3>
             <p className="text-base mb-8 leading-relaxed" style={{ color: "#7a5c40", fontFamily: "var(--font-body)" }}>
-              Fill in your event details and let us prepare a traditional leaf feast for your guests.
+              Fill in your event details and let us prepare a traditional feast — Veg or Non-Veg — for your guests.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <motion.button
@@ -368,14 +458,11 @@ function NormalMenu() {
       </section>
 
       <FAQ faqs={[
-        { question: "What is included in JIP Caterers' Normal Menu for weddings?", answer: "The Normal Menu includes setup items (water bottle, salt, tomato sauce), accompaniments (boonthi raitha, pepper rasam, buttermilk), starters (dry jamun, veg cutlet, pulka chapathi, veg biryani), main course (white rice, wedding sambar, vatha kuzhambu, poriyal, kootu), desserts (badam payasam, ice cream), and crunchy sides (appalam, potato chips, popcorn)." },
-        { question: "Is the Normal Menu served on a banana leaf?", answer: "Yes. The Normal Menu is a traditional South Indian vegetarian leaf service — meals are served on fresh, sanitised banana leaves, maintaining the authentic style of a traditional wedding feast." },
-        { question: "How many people can the Normal Menu cater to?", answer: "The Normal Menu is ideal for small to large-scale events — from intimate family gatherings to large wedding receptions with hundreds of guests. Contact us with your guest count for a customised quote." },
-        { question: "Does the Normal Menu include desserts?", answer: "Yes! The Normal Menu includes Badam Payasam and Ice Cream as desserts, giving your guests a sweet ending to the traditional feast." },
-        { question: "What starters are served in the Normal Menu?", answer: "The Normal Menu starters include Dry Jamun, Dry Sweet, Veg Cutlet, Pulka Chapathi with Paneer Bhurji Masala, and Veg Biryani — a satisfying spread before the main course." },
-        { question: "Can I upgrade from the Normal Menu to a higher tier?", answer: "Absolutely. You can upgrade to the Elite Menu for welcome drinks and more variety, the Premium Menu for luxury live counters, or a fully Customized Menu. Our team will help you pick the right package for your event." },
-        { question: "Is the Normal Menu suitable for traditional Tamil wedding receptions?", answer: "Yes, the Normal Menu is specifically curated for traditional Tamil wedding receptions. It includes all essential dishes like special wedding sambar, kuzhambu, poriyal, kootu, and payasam — the hallmarks of a authentic South Indian feast." },
-        { question: "How do I book the Normal Menu for my event?", answer: "Simply fill out our booking form or WhatsApp us at 9092881813. Share your event type, date, location, and guest count. Our team will confirm availability and discuss the menu details with you." },
+        { question: "What is included in JIP Caterers' Normal Menu for weddings?", answer: "The Normal (Classic) Menu is available in Pure Veg and Non-Veg. Veg: Mixed Fruit Sharbat, Bonda with Chutney, Traditional Banana Leaf setup, Dry Sweet, Kara Boondi, Chapati/Roomali Roti, Butter Masala, Special Veg Biryani, Pachadi, Steamed Rice, Sambar, Vatha Kuzhambu, Rasam, Buttermilk, Poriyal/Kootu, and Payasam. Non-Veg: Tea/Coffee, Vadai with Chutney, Banana Leaf with Garlic Pickle, Bread Halwa, Chicken 555, Chicken/Mutton Biryani, OTC Pachadi, and Kathirikai Masala." },
+        { question: "Does JIP Caterers offer Non-Veg catering?", answer: "Yes! JIP Caterers proudly serves both Pure Veg and Non-Veg menus. You can use the toggle on any menu page to switch between the two. The Non-Veg menu features Chicken 555, Chicken/Mutton Biryani, Bread Halwa, OTC Pachadi, Kathirikai Masala, and more." },
+        { question: "Is the Normal Menu served on a banana leaf?", answer: "Yes. Both the Veg and Non-Veg Normal Menu are served on fresh, sanitised banana leaves in traditional South Indian style. The Veg version includes Thuvaiyal/Pickle, while the Non-Veg version includes Garlic Pickle." },
+        { question: "Can I have both veg and non-veg options at the same event?", answer: "Yes. We can accommodate both veg and non-veg requirements for different sections of guests at the same event. Simply mention it in the booking form or contact us on WhatsApp at 9092881813." },
+        { question: "Can I upgrade from the Normal Menu to a higher tier?", answer: "Absolutely. You can upgrade to the Elite Menu for more variety and additional items, or the Premium Menu for a grander feast with more non-veg specials like Fish Fry, Nattukozhi Varuval, and Mutton Bone Rasam." },
       ]} />
 
       <Footer />

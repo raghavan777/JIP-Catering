@@ -1,4 +1,4 @@
-import logo1 from "../assets/logo1.png";
+import logo1 from "../assets/logo1_transparent.png";
 import heroDecoration from "../assets/hero_decoration.png";
 import foodPlatter from "../assets/food-platter.png";
 import plateAnimation from "../assets/Items_on_plate_animation_202606261849.mp4";
@@ -231,7 +231,7 @@ function Landing() {
       {/* ── HERO ─────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative pt-12 sm:pt-28 pb-16 flex items-center overflow-hidden"
+        className="relative pt-14 sm:pt-14 pb-10 flex items-center overflow-hidden"
         style={{ background: "linear-gradient(135deg, #FFD1A9 0%, #FDF3E7 30%, #F5ECDB 65%, #FFD1A9 100%)" }}
       >
         <MarigoldShower />
@@ -246,16 +246,24 @@ function Landing() {
         <div className="absolute bottom-10 left-10 pointer-events-none select-none opacity-50"><KolamPattern /></div>
 
         <div className="w-full mx-auto px-4 sm:px-16 lg:px-28 xl:px-32 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center py-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center py-2">
 
             {/* LEFT */}
             <motion.div variants={stagger} initial="hidden" animate="show" className="flex flex-col justify-center w-full min-w-0">
 
               {/* Brand */}
-              <motion.div variants={fadeUp} className="mb-4">
-                <span className="copper-gleam text-3xl lg:text-4xl font-bold font-cinzel tracking-widest block text-left" style={{ letterSpacing: "0.15em" }}>
-                  JIP CATERERS
-                </span>
+              <motion.div variants={fadeUp} className="mb-0">
+                <img
+                  src={logo1}
+                  alt="JIP Caterers Logo"
+                  style={{
+                    width: "clamp(200px, 28vw, 300px)",
+                    height: "auto",
+                    objectFit: "contain",
+                    display: "block",
+                    marginBottom: "-12px",
+                  }}
+                />
               </motion.div>
 
               {/* Badge */}
@@ -266,7 +274,7 @@ function Landing() {
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200 }}
                 >
-                  🌿 South Indian Tradition Since Inception
+                  🌿 South Indian Tradition Since 2015
                 </motion.span>
               </motion.div>
 
@@ -538,7 +546,7 @@ function Landing() {
             {[
               { icon: "🍃", title: "Banana Leaf Service", desc: "Authentic serving style utilizing fresh, sanitised banana leaves.", animClass: "leaf-unfurl" },
               { icon: "👑", title: "Expert Heritage Chefs", desc: "Trained traditional specialists for fine regional preparations.", animClass: "marigold-bloom" },
-              { icon: "✨", title: "100% Pure Vegetarian", desc: "Sourced from pure farms, cooked in complete hygiene.", animClass: "spice-burst" },
+              { icon: "✨", title: "Veg & Non-Veg Menus", desc: "Choose Pure Veg or Non-Veg — both served on banana leaf.", animClass: "spice-burst" },
             ].map((item, i) => (
               <ClipRevealCard key={i} delay={i * 0.18}>
                 <motion.div
@@ -589,13 +597,13 @@ function Landing() {
 
       {/* ── FAQ ────────────────────────────────────────── */}
       <FAQ faqs={[
-        { question: "What kind of South Indian vegetarian catering does JIP Caterers offer?", answer: "JIP Caterers specialises in premium pure South Indian vegetarian catering — serving authentic banana leaf feasts with traditional recipes, fresh ingredients, and expert heritage chefs for weddings, receptions, engagements, and all family celebrations." },
+        { question: "What kind of South Indian catering does JIP Caterers offer?", answer: "JIP Caterers specialises in premium South Indian catering — serving authentic banana leaf feasts with both Pure Veg and Non-Veg menus, traditional recipes, fresh ingredients, and expert heritage chefs for weddings, receptions, engagements, and all family celebrations." },
         { question: "Which events does JIP Caterers in Tiruvallur cater for?", answer: "We cater for all occasions — weddings, wedding receptions, engagements, housewarming ceremonies, birthday parties, corporate events, religious festivals, and other large-scale family gatherings across Chennai and Tamil Nadu." },
-        { question: "What menu packages does JIP Caterers provide?", answer: "We offer four tiers: Normal Menu (traditional banana leaf service), Elite Menu (enhanced variety with welcome drinks and premium desserts), Premium Menu (luxury reception feast with live counters), and Customized Menu (fully tailored to your preferences and guest count)." },
-        { question: "Is JIP Caterers 100% vegetarian?", answer: "Yes, absolutely. JIP Caterers serves exclusively pure South Indian vegetarian food. All dishes are prepared in strict hygiene conditions using fresh farm ingredients, in traditional brass and steel vessels." },
+        { question: "What menu packages does JIP Caterers provide?", answer: "We offer four tiers: Normal Menu (traditional banana leaf service), Elite Menu (enhanced variety with welcome drinks and premium desserts), Premium Menu (luxury reception feast with live counters), and Customized Menu (fully tailored to your preferences and guest count). All tiers are available in Pure Veg and Non-Veg." },
+        { question: "Does JIP Caterers serve both Veg and Non-Veg food?", answer: "Yes! JIP Caterers serves both Pure Veg and Non-Veg menus. Use the 🌿 Veg / 🍗 Non-Veg toggle on any menu page to see the full spread. Non-Veg options include Chicken 555, Chicken/Mutton Biryani, Fish Fry, Nattukozhi Varuval, and more." },
         { question: "Does JIP Caterers offer a live dosa counter?", answer: "Yes! Our Premium Menu includes an interactive Live Dosa Counter serving fresh hot variety dosas, along with live Ice Cream counters and Fruit Salad stations, making your event lively and memorable." },
         { question: "How far in advance should I book JIP Caterers?", answer: "We strongly recommend booking 2 to 4 weeks before your event. During peak wedding and auspicious seasons (Panguni, Vaikasi, Thai), slots fill very quickly — early booking guarantees our best team for your celebration." },
-        { question: "What is included in the traditional banana leaf service?", answer: "Our banana leaf service includes freshly sanitised banana leaves, welcome drinks, dry starters, full multi-course main meals (sambar, kuzhambu, poriyal, kootu, rasam), desserts (payasam, ice cream), papadum, and dedicated professional serving staff." },
+        { question: "What is included in the traditional banana leaf service?", answer: "Our banana leaf service includes freshly sanitised banana leaves, welcome drinks, dry starters, full multi-course main meals (sambar, kuzhambu, poriyal, kootu, rasam), desserts (payasam, ice cream), papadum, and dedicated professional serving staff — available in both Veg and Non-Veg." },
         { question: "Where is JIP Caterers located and where do they serve?", answer: "JIP Caterers is based at Pallipat Road, Podaturpeta, Tiruvallur, Tamil Nadu. We serve clients across Tiruvallur, Chennai, and the surrounding districts. Contact us at 9092881813 or 9551613736 for location-based queries." },
       ]} />
 

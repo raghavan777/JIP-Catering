@@ -96,8 +96,8 @@ const KolamWatermark = ({ className = "" }) => (
 
 const faqs = [
   {
-    question: "Do you serve only vegetarian food?",
-    answer: "Yes. JIP Caterers specializes exclusively in premium, pure South Indian vegetarian catering, ensuring traditional banana leaf service with authentic flavors and strict hygiene protocols."
+    question: "Does JIP Caterers serve both Veg and Non-Veg food?",
+    answer: "Yes! JIP Caterers now serves both Pure Veg and Non-Veg menus. You can choose your preference on each menu page using the 🌿 Pure Veg / 🍗 Non-Veg toggle. All menus are served in the traditional South Indian banana leaf style with fresh ingredients and strict hygiene."
   },
   {
     question: "What types of events do you cater?",
@@ -105,11 +105,11 @@ const faqs = [
   },
   {
     question: "What menu packages do you offer?",
-    answer: "We offer four main tiers: Normal Menu (Authentic traditional feast), Elite Menu (Enhanced variety & spread), Premium Menu (Luxury buffet & reception feast), and Customized Menu (Tailored gastronomy matching your guest preferences and budget)."
+    answer: "We offer four main tiers: Normal Menu (Authentic traditional feast), Elite Menu (Enhanced variety & spread), Premium Menu (Luxury buffet & reception feast), and Customized Menu (Tailored gastronomy matching your guest preferences and budget). Each tier is available in both Veg and Non-Veg."
   },
   {
     question: "Can I customize the menu?",
-    answer: "Absolutely. We encourage menu customization. You can choose specific starters, main course curries, desserts, and traditional accompaniments according to your preferences and guest choices."
+    answer: "Absolutely. We encourage menu customization. You can choose specific starters, main course curries, desserts, and traditional accompaniments according to your preferences and guest choices. You can also mix Veg and Non-Veg sections for different guest groups."
   },
   {
     question: "Do you provide live food counters?",
@@ -121,7 +121,7 @@ const faqs = [
   },
   {
     question: "What is included in the banana leaf service?",
-    answer: "Our authentic banana leaf service includes fresh, sanitised banana leaves, welcome drinks, starters, full multi-course main meals, desserts, traditional accompaniments (papadum, pickle, payasam), and dedicated professional serving staff."
+    answer: "Our authentic banana leaf service includes fresh, sanitised banana leaves, welcome drinks, starters, full multi-course main meals, desserts, traditional accompaniments (papadum, pickle, payasam), and dedicated professional serving staff. Both Veg and Non-Veg versions are served on the banana leaf."
   }
 ];
 
@@ -294,7 +294,7 @@ export default function FAQ({ faqs: faqsProp }) {
 
         {/* Small Bottom traditional touch */}
         <div className="mt-12 flex justify-center items-center gap-4 text-xs font-serif text-[#7a5c40] opacity-85">
-          <span>🌿 100% Pure South Indian Veg</span>
+          <span>🌿 Pure Veg &amp; 🍗 Non-Veg Available</span>
           <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
           <span>🍽 Premium Feast Experience</span>
         </div>
