@@ -185,7 +185,7 @@ function Landing() {
       "geo": { "@type": "GeoCoordinates", "latitude": "13.1450", "longitude": "79.9129" },
       "openingHoursSpecification": [{
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         "opens": "08:00", "closes": "21:00"
       }],
       "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "120", "bestRating": "5" }
@@ -231,7 +231,7 @@ function Landing() {
       {/* ── HERO ─────────────────────────────── */}
       <section
         ref={heroRef}
-        className="relative pt-14 sm:pt-14 pb-10 flex items-center overflow-hidden"
+        className="relative pt-4 sm:pt-14 pb-10 flex items-center overflow-hidden"
         style={{ background: "linear-gradient(135deg, #FFD1A9 0%, #FDF3E7 30%, #F5ECDB 65%, #FFD1A9 100%)" }}
       >
         <MarigoldShower />
@@ -246,7 +246,7 @@ function Landing() {
         <div className="absolute bottom-10 left-10 pointer-events-none select-none opacity-50"><KolamPattern /></div>
 
         <div className="w-full mx-auto px-4 sm:px-16 lg:px-28 xl:px-32 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center py-2">
+          <div className="grid lg:grid-cols-2 gap-1 items-center py-2">
 
             {/* LEFT */}
             <motion.div variants={stagger} initial="hidden" animate="show" className="flex flex-col justify-center w-full min-w-0">
